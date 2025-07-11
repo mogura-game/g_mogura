@@ -376,33 +376,18 @@ GameObject:
   - component: {fileID: 652483337}
   - component: {fileID: 652483336}
   - component: {fileID: 652483338}
-  - component: {fileID: 652483334}
+  - component: {fileID: 652483343}
   - component: {fileID: 652483341}
   - component: {fileID: 652483342}
   - component: {fileID: 652483339}
   - component: {fileID: 652483340}
   m_Layer: 0
-  m_Name: TestMachine
+  m_Name: Mogura
   m_TagString: Untagged
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &652483334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 652483332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4494685af0c9e494098f29e4f4e699a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DEBUG: 0
-  testMachine: {fileID: 652483341}
-  currentState: 0
 --- !u!4 &652483335
 Transform:
   m_ObjectHideFlags: 0
@@ -678,12 +663,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
-  initialState: {fileID: 11400000, guid: 8a357a0be5c342c4eb668e973c74beaf, type: 2}
+  initialState: {fileID: 11400000, guid: ddf6cd63876063145812b258673ba487, type: 2}
   controller: {fileID: 0}
   currentState: {fileID: 0}
-  TestStatesList:
-  - {fileID: 11400000, guid: 8a357a0be5c342c4eb668e973c74beaf, type: 2}
-  - {fileID: 11400000, guid: 26cd9441f2de74447a2d3b4309546ff7, type: 2}
+  EntityStatesList:
+  - {fileID: 11400000, guid: ddf6cd63876063145812b258673ba487, type: 2}
+  - {fileID: 11400000, guid: 6287dd29cc8b3e14ebae2137098c4c6e, type: 2}
 --- !u!114 &652483342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -711,8 +696,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 652483334}
-        m_TargetAssemblyTypeName: App.Game.Entities.Test.TestEntityController, Assembly-CSharp
+      - m_Target: {fileID: 652483343}
+        m_TargetAssemblyTypeName: App.Game.Entities.Mogura.PlayerController, Assembly-CSharp
         m_MethodName: Move
         m_Mode: 1
         m_Arguments:
@@ -802,6 +787,21 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 330585545}
+--- !u!114 &652483343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652483332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9618d0cb53e7906469cb1469eed7092d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DEBUG: 0
+  stateMachine: {fileID: 652483341}
+  currentState: 0
 --- !u!114 &702497546
 MonoBehaviour:
   m_ObjectHideFlags: 0

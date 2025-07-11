@@ -1,30 +1,27 @@
-using UnityEngine;
-
-namespace App.Game.Entities.Test {
-    [CreateAssetMenu(menuName = "States/TestState", fileName = "TestState")]
-    public class TestIdleState : BaseState {
+namespace App.Game.Entities.Player {
     /// <summary>
-    /// Test class for implementing a default Test State using ScriptableObject.
+    /// Player entity class for implementing a default StateMachine from custom ScriptableObject States.
     /// </summary>
+    public class PlayerStateMachine : BaseStateMachine {
         // ? DEBUG======================================================================================================================================
 
         // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
-
-        // * ATTRIBUTES
         
+        // * ATTRIBUTES
+
         // * INTERNAL
 
         // ? BASE METHODS===============================================================================================================================
+        protected override void Awake() {
+            this.controller ??= this.GetComponent<EntityController>();
+
+            base.Awake();
+        }
 
         // ? CUSTOM METHODS=============================================================================================================================
-        
-        // ? EVENT METHODS==============================================================================================================================
-        public override void OnEnter(BaseStateMachine stateMachine) {
-            Debug.Log("Idling");
 
-            base.OnEnter(stateMachine);
-        }
-        
+        // ? EVENT METHODS==============================================================================================================================
+
     }
 }
