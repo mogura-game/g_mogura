@@ -13,11 +13,6 @@ namespace App.Game.Entities.Mogura {
         // * INTERNAL
 
         // ? BASE METHODS===============================================================================================================================
-        protected override void Awake() {
-            this.controller ??= this.GetComponent<EntityController>();
-
-            base.Awake();
-        }
 
         // ? CUSTOM METHODS=============================================================================================================================
 

@@ -18,7 +18,9 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
-        [SerializeField] protected EntityStates id;
+        [SerializeField] public EntityStates id;
+        [Tooltip("AnimationClip to play while on this State.")]
+        [SerializeField] public AnimationClip clip;
 
         // * INTERNAL
 
