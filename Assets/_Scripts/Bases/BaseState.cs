@@ -1,4 +1,3 @@
-using App.Game.Entities.Test;
 using UnityEngine;
 
 namespace App.Game.Entities {
@@ -12,11 +11,14 @@ namespace App.Game.Entities {
 
         // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
+        [Header("References")]
         [Tooltip("Reference to the active state machine.")]
         [SerializeField] protected BaseStateMachine stateMachine;
 
         // * ATTRIBUTES
-        [SerializeField] protected TestStates id;
+        [Header("Attributes")]
+        [Tooltip("Identifier for this state.")]
+        [SerializeField] protected EntityStates id;
 
         // * INTERNAL
 
@@ -28,6 +30,7 @@ namespace App.Game.Entities {
         /// <summary>Executed right at the start of the State.</summary>
         public virtual void OnEnter(BaseStateMachine stateMachine) {
             this.stateMachine = stateMachine;
+            stateMachine.controller.currentState = this.id;
 
             if (DEBUG) Debug.Log($"[S] State " + this + " started");
         }
