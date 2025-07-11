@@ -14,7 +14,7 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Current state of the entity.")]
-        [SerializeField] public EntityStates currentState;
+        [SerializeField] public EntityStates currentState => this.stateMachine.currentState.id;
 
         // * INTERNAL
 
