@@ -23,7 +23,7 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Displays currently executing State.")]
-        [SerializeField] protected BaseState currentState;
+        [SerializeField] public BaseState currentState;
         [Tooltip("List of all available States this EntityStateMachine inherited class can execute.")]
         [SerializeField] public List<BaseState> EntityStatesList = new List<BaseState>();
 
@@ -31,6 +31,10 @@ namespace App.Game.Entities {
 
         // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {
+            this.controller ??= this.GetComponent<EntityController>();
+        }
+
+        protected virtual void Start() {
             if (this.initialState) this.ChangeState(this.initialState);
         }
 
@@ -46,15 +50,14 @@ namespace App.Game.Entities {
         /// </summary>
         /// <param name="newState">State to transition to.</param>
         public virtual void ChangeState(BaseState newState) {
-            if (newState == null) return;
+            if (!newState) return; //Prevents null input
 
             if (DEBUG) Debug.Log("[SM] State" + this.currentState?.GetType().Name + " changed to " + newState.GetType().Name + ", this");
 
             this.currentState?.OnExit();
-            this.currentState = newState;
             this.currentState?.OnEnter(this);
         }
-
+        
         // ? EVENT METHODS==============================================================================================================================
 
     }
