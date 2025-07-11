@@ -1,4 +1,5 @@
-using App.Game.Entities.Test;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace App.Game.Entities {
@@ -8,19 +9,23 @@ namespace App.Game.Entities {
     /// </summary>
     public abstract class BaseStateMachine : MonoBehaviour {
         // ? DEBUG======================================================================================================================================
+        [Tooltip("Enables debugging logs for this object.")]
         [SerializeField] protected bool DEBUG = false;
 
         // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
-        [Header("Base State Machine")]
+        [Header("References")]
         [Tooltip("Default State for State Machine to execute.")]
         [SerializeField] protected BaseState initialState;
-        [SerializeField] public TestEntityController controller;
+        [Tooltip("Reference to the EntityController inherited class this machine is assigned to.")]
+        [SerializeField] public EntityController controller;
 
         // * ATTRIBUTES
-        [Header("State Machine Attributes")]
+        [Header("Attributes")]
         [Tooltip("Displays currently executing State.")]
         [SerializeField] protected BaseState currentState;
+        [Tooltip("List of all available States this EntityStateMachine inherited class can execute.")]
+        [SerializeField] public List<BaseState> EntityStatesList = new List<BaseState>();
 
         // * INTERNAL
 
@@ -52,5 +57,15 @@ namespace App.Game.Entities {
 
         // ? EVENT METHODS==============================================================================================================================
 
+    }
+
+    /// <summary>
+    /// Enumeration of possible states for an Entity.
+    /// Used for identifying and indexing State behaviors.
+    /// </summary>
+    [Serializable]
+    public enum EntityStates {
+        idle,
+        move
     }
 }

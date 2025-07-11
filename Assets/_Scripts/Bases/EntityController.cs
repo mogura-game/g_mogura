@@ -1,40 +1,32 @@
-using System;
 using UnityEngine;
 
-namespace App.Game.Entities.Test {
-    public class TestEntityController : MonoBehaviour {
+namespace App.Game.Entities {
+    public abstract class EntityController : MonoBehaviour {
         // ? DEBUG======================================================================================================================================
         [SerializeField] protected bool DEBUG = false;
 
         // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Attached reference to the SM for testing.")]
-        [SerializeField] private TestStateMachine testMachine;
+        [Tooltip("Reference to the Entity State Machine inherited class controlling this entity.")]
+        [SerializeField] protected BaseStateMachine stateMachine;
 
         // * ATTRIBUTES
-        [SerializeField] public TestStates currentState;
+        [Header("Attributes")]
+        [Tooltip("Current state of the entity.")]
+        [SerializeField] public EntityStates currentState;
 
         // * INTERNAL
 
         // ? BASE METHODS===============================================================================================================================
         private void Start() {
-            if (ReferenceEquals(this.testMachine, null)) if (DEBUG) Debug.Log("[PC] SM initialized");
-            else Debug.LogError("[PC] No TestStateMachine assigned!");
+            if (ReferenceEquals(this.stateMachine, null)) if (DEBUG) Debug.Log("[PC] Entity SM initialized");
+            else Debug.LogError("[PC] No StateMachine assigned!");
         }
 
         // ? CUSTOM METHODS=============================================================================================================================
 
         // ? EVENT METHODS==============================================================================================================================
-        public void Move() {
-            if (this.currentState != TestStates.move) this.testMachine.ChangeState(this.testMachine.TestStatesList[(int)TestStates.move]);
-        }
 
-    }
-    
-    [Serializable]
-    public enum TestStates {
-        idle,
-        move
     }
 }

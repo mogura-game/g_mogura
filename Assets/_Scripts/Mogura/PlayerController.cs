@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace App.Game.Entities.Test {
-    [CreateAssetMenu(menuName = "States/TestState", fileName = "TestState")]
-    public class TestMoveState : BaseState {
+namespace App.Game.Entities.Player {
     /// <summary>
-    /// Test class for implementing a default Test State using ScriptableObject.
+    /// Player-specific implementation of the EntityController.
+    /// Handles player-specific state transitions and behavior.
     /// </summary>
+    public class PlayerController : EntityController {
         // ? DEBUG======================================================================================================================================
 
         // ? PARAMETERS=================================================================================================================================
@@ -16,15 +16,20 @@ namespace App.Game.Entities.Test {
         // * INTERNAL
 
         // ? BASE METHODS===============================================================================================================================
+        private void Start() {
+            if (ReferenceEquals(this.stateMachine, null)) if (DEBUG) Debug.Log("[PC] Player SM initialized");
+            else Debug.LogError("[PC] No PlayerStateMachine assigned!");
+        }
 
         // ? CUSTOM METHODS=============================================================================================================================
-        
-        // ? EVENT METHODS==============================================================================================================================
-        public override void OnEnter(BaseStateMachine stateMachine) {
-            Debug.Log("Moving");
-            stateMachine.controller.currentState = this.id;
 
-            base.OnEnter(stateMachine);
+        // ? EVENT METHODS==============================================================================================================================
+        /// <summary>
+        /// Custom Move implementation for Player entity.
+        /// Called by PlayerInput Move event.
+        /// </summary>
+        public void Move() {
+            if (this.currentState != EntityStates.move) this.stateMachine.ChangeState(this.stateMachine.EntityStatesList[(int)EntityStates.move]);
         }
 
     }
