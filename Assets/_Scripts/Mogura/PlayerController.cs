@@ -1,9 +1,9 @@
 using UnityEngine;
 
-namespace App.Game.Entities.Player {
+namespace App.Game.Entities.Mogura {
     /// <summary>
     /// Player-specific implementation of the EntityController.
-    /// Handles player-specific state transitions and behavior.
+    /// Handles player-specific state logic and behaviours.
     /// </summary>
     public class PlayerController : EntityController {
         // ? DEBUG======================================================================================================================================
