@@ -63,6 +63,19 @@ namespace App.Game.Entities.Mogura {
             this.inputDirection = context.ReadValue<Vector2>();
             if (DEBUG && (context.performed || context.canceled)) Debug.Log($"[PI] Move input: {this.inputDirection}");
         }
+        
+        /// <summary>
+        /// Dig mechanic. Toggle the mode when available.
+        /// Must match On<MethodName> to be called by PlayerInput events.
+        /// </summary>
+        public void OnToggleDig(InputAction.CallbackContext context) {
+            if (DEBUG && (context.performed || context.canceled)) Debug.Log("[PI] : Dig mode started");
 
+            this.stateMachine.ChangeState(EntityStates.dig);
+        }
+        
+        public override void UpdateStateAnimation(EntityStates id) {
+            this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
+        }
     }
 }
