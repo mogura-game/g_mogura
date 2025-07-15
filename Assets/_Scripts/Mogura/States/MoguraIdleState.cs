@@ -28,6 +28,8 @@ namespace App.Game.Entities.Mogura {
         }
 
         public override void OnExecute () {
+            if (this.PC.rb.linearVelocity.Abs().x >= 0.25f) this.SM.ChangeState(EntityStates.move); 
+
             base.OnExecute();
         }
     }
