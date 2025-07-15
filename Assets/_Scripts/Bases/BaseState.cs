@@ -4,9 +4,8 @@ namespace App.Game.Entities {
     public abstract class BaseState : ScriptableObject, IState {
     /// <summary>
     /// Base class for implementing States using ScriptableObject.
-    /// Inherit from this class to define specific transition and behaviours for each State.
+    /// Inherit from this class to define specific transition and behaviours per State.
     /// </summary>
-    // TODO: Update naming convention for expresion-bodied properties, matching global entity attributes and entity-specific attributes
     // ? DEBUG======================================================================================================================================
         [SerializeField] protected bool DEBUG = false;
 
@@ -20,18 +19,18 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
         [SerializeField] public EntityStates id;
-        [Tooltip("AnimationClip to play on entering this State.")]
-        [SerializeField] public AnimationClip clip;
 
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
 
     // ? CUSTOM METHODS=============================================================================================================================
-        
+
     // ? EVENT METHODS==============================================================================================================================
         public virtual void OnEnter(BaseStateMachine stateMachine) {
             this.stateMachine = stateMachine;
+
+            this.stateMachine.RequestStateAnimation();
 
             if (DEBUG) Debug.Log($"[S] State " + this + " entered");
         }

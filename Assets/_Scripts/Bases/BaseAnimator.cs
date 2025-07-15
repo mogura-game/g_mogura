@@ -20,14 +20,14 @@ namespace App.Game.Entities {
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
-        protected virtual void Awake() {}
+        protected virtual void Awake() { }
         
-        protected virtual void Start() {}
+        protected virtual void Start() { }
         
-        protected virtual void Update() {}
+        protected virtual void Update() { }
 
     // ? CUSTOM METHODS=============================================================================================================================
-        public void Play(string stateId) {
+        public virtual void PlayAnimation(string stateId) {
             this.ani.Play(stateId, 0);
         }
 
