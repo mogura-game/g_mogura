@@ -7,7 +7,7 @@ namespace App.Game.Entities.Mogura {
     /// Handles player-specific state logic and behaviours.
     /// </summary>
     [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Collider2D))]
-    [RequireComponent(typeof(PlayerStateMachine), typeof(PlayerInput))]
+    [RequireComponent(typeof(PlayerInput))]
     //[RequireComponent(typeof(PlayerAnimator), typeof(Animator))]
     //[RequireComponent(typeof(PlayerSounder), typeof(AudioSource))]
     public class PlayerController : BaseController {
@@ -15,22 +15,40 @@ namespace App.Game.Entities.Mogura {
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
+        [Header("References")]
+        [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
+        public Rigidbody2D rb;
 
         // * ATTRIBUTES
+        [Header("Attibutes")]
+        [Tooltip("")]
+        [SerializeField] private float speed = 1.0f;
 
         // * INTERNAL
+        [Header("Internal")]
+        //[Tooltip("")]
+        [SerializeField] private Vector2 inputDirection;
 
-            if (ReferenceEquals(this.stateMachine, null)) if (DEBUG) Debug.Log("[PC] Player SM initialized");
-            else Debug.LogError("[PC] No PlayerStateMachine assigned!");
     // ? BASE METHODS===============================================================================================================================
         protected override void Awake() {
+            this.stateMachine = new PlayerStateMachine();
+            this.stateMachine.baseController = this;
+
+            if (!this.rb) Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
+            else this.GetComponent<Rigidbody2D>();
         }
+        
         protected override void Start() {
 
             base.Start();
         }
         
         protected override void FixedUpdate() {
+            // Evita aplicar fuerza si no hay input
+            if (this.inputDirection.sqrMagnitude > 0.01f) {
+                this.rb.AddForce(10 * speed * inputDirection.x * Vector2.right, ForceMode2D.Force);
+            }
+
             base.FixedUpdate();
         }
 
@@ -41,8 +59,9 @@ namespace App.Game.Entities.Mogura {
         /// Custom Move implementation for Player entity.
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
-        public void Move() {
-            if (this.currentState != EntityStates.move) this.stateMachine.ChangeState(this.stateMachine.EntityStatesList[(int)EntityStates.move]);
+        public void OnMove(InputAction.CallbackContext context) {
+            this.inputDirection = context.ReadValue<Vector2>();
+            if (DEBUG && (context.performed || context.canceled)) Debug.Log($"[PI] Move input: {this.inputDirection}");
         }
 
     }
