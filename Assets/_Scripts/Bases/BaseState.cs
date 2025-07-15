@@ -33,7 +33,7 @@ namespace App.Game.Entities {
         public virtual void OnEnter(BaseStateMachine stateMachine) {
             this.stateMachine = stateMachine;
 
-            if (DEBUG) Debug.Log($"[S] State " + this + " started");
+            if (DEBUG) Debug.Log($"[S] State " + this + " entered");
         }
 
         public virtual void OnExecute() {
@@ -41,7 +41,7 @@ namespace App.Game.Entities {
         }
 
         public virtual void OnExit() {
-            if (DEBUG) Debug.Log($"[S] State " + this + " ended");
+            if (DEBUG) Debug.Log($"[S] State " + this + " exited");
         }
     }
 }

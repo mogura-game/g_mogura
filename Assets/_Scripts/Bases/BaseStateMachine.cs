@@ -7,6 +7,7 @@ namespace App.Game.Entities {
     /// Base class for implementing StateMachines from ScriptableObject States.
     /// Inherit from this class to define specific behaviors for each State Machine.
     /// </summary>
+    [RequireComponent(typeof(BaseController))]
     public abstract class BaseStateMachine : MonoBehaviour {
     // ? DEBUG======================================================================================================================================
         [Tooltip("Enables debugging logs for this object.")]
@@ -16,32 +17,32 @@ namespace App.Game.Entities {
         // * REFERENCES
         [Header("References")]
         [Tooltip("Default State for State Machine to execute.")]
-        [SerializeField] protected BaseState initialState;
+        [SerializeField] protected EntityStates initialState;
         [Tooltip("Reference to the EntityController inherited class this machine is assigned to.")]
-        [SerializeField] public EntityController controller;
+        [SerializeField] public BaseController controller;
 
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Displays currently executing State.")]
         [SerializeField] public BaseState currentState;
-        [SerializeField] public List<BaseState> EntityStatesList = new List<BaseState>();
         [Tooltip("List of all available States this BaseStateMachine inherited class can execute.")]
+        [SerializeField] public List<BaseState> entityStatesList = new List<BaseState>();
 
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {
-            this.controller ??= this.GetComponent<EntityController>();
+            this.controller ??= this.GetComponent<BaseController>();
         }
 
         protected virtual void Start() {
-            if (this.initialState) this.ChangeState(this.initialState);
+            this.ChangeState(this.initialState);
         }
 
-        protected virtual void Update() {
+        protected virtual void FixedUpdate() {
+            if (DEBUG) Debug.Log($"[SM] Current state: {this.currentState?.id}", this);
+            
             this.currentState?.OnExecute();
-
-            if (DEBUG) Debug.Log($"[SM] Current state: {this.currentState?.GetType().Name}", this);
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
@@ -49,14 +50,18 @@ namespace App.Game.Entities {
     // ? EVENT METHODS==============================================================================================================================
         /// <summary>
         /// Replaces current State to a new one.
+        /// State name must be defined in EntityStates enum.
         /// </summary>
         /// <param name="newState">State to transition to.</param>
-        public virtual void ChangeState(BaseState newState) {
-            if (!newState) return; //Prevents null input
-
-            if (DEBUG) Debug.Log("[SM] State" + this.currentState?.GetType().Name + " changed to " + newState.GetType().Name + ", this");
+        public virtual void ChangeState(EntityStates newState) {
+            BaseState nextState = this.entityStatesList[(int)newState];
+            if (this.currentState && this.currentState.id == nextState.id) return;
 
             this.currentState?.OnExit();
+
+            if (DEBUG) Debug.Log($"[SM] State {this.currentState?.id} changed to {nextState.id}", this);
+            this.currentState = nextState;
+
             this.currentState?.OnEnter(this);
         }
     }
