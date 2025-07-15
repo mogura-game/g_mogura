@@ -57,6 +57,10 @@ namespace App.Game.Entities {
 
             this.currentState?.OnEnter(this);
         }
+
+        public void RequestStateAnimation() {
+            this.baseController.UpdateStateAnimation(this.currentState.id);
+        }
     }
 
     /// <summary>
