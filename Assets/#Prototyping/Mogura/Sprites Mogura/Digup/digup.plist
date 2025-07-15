@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>Digup_01.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{29, 67}, {95, 58}}</string>
+			<key>spriteOffset</key>
+			<string>{14, 29}</string>
+			<key>spriteSize</key>
+			<string>{95, 58}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{83, 384}, {95, 58}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_02.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{31, 68}, {89, 54}}</string>
+			<key>spriteOffset</key>
+			<string>{13, 30}</string>
+			<key>spriteSize</key>
+			<string>{89, 54}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{374, 390}, {89, 54}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_03.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 65}, {93, 58}}</string>
+			<key>spriteOffset</key>
+			<string>{16, 31}</string>
+			<key>spriteSize</key>
+			<string>{93, 58}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{417, 258}, {93, 58}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_04.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{35, 59}, {81, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{13, 35}</string>
+			<key>spriteSize</key>
+			<string>{81, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 356}, {81, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_05.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 60}, {93, 60}}</string>
+			<key>spriteOffset</key>
+			<string>{16, 35}</string>
+			<key>spriteSize</key>
+			<string>{93, 60}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{374, 328}, {93, 60}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_06.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 59}, {89, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{14, 35}</string>
+			<key>spriteSize</key>
+			<string>{89, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{350, 194}, {89, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_07.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{33, 52}, {89, 68}}</string>
+			<key>spriteOffset</key>
+			<string>{15, 39}</string>
+			<key>spriteSize</key>
+			<string>{89, 68}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{83, 444}, {89, 68}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_08.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{41, 41}, {81, 80}}</string>
+			<key>spriteOffset</key>
+			<string>{19, 44}</string>
+			<key>spriteSize</key>
+			<string>{81, 80}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 208}, {81, 80}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_09.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{35, 52}, {85, 68}}</string>
+			<key>spriteOffset</key>
+			<string>{15, 39}</string>
+			<key>spriteSize</key>
+			<string>{85, 68}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{259, 258}, {85, 68}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_10.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{35, 59}, {85, 62}}</string>
+			<key>spriteOffset</key>
+			<string>{15, 35}</string>
+			<key>spriteSize</key>
+			<string>{85, 62}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{289, 446}, {85, 62}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_11.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{40, 58}, {81, 64}}</string>
+			<key>spriteOffset</key>
+			<string>{18, 35}</string>
+			<key>spriteSize</key>
+			<string>{81, 64}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 290}, {81, 64}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_12.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{40, 62}, {81, 60}}</string>
+			<key>spriteOffset</key>
+			<string>{18, 33}</string>
+			<key>spriteSize</key>
+			<string>{81, 60}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 420}, {81, 60}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_13.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{40, 62}, {81, 60}}</string>
+			<key>spriteOffset</key>
+			<string>{18, 33}</string>
+			<key>spriteSize</key>
+			<string>{81, 60}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{429, 74}, {81, 60}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_14.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{45, 15}, {41, 144}}</string>
+			<key>spriteOffset</key>
+			<string>{3, 38}</string>
+			<key>spriteSize</key>
+			<string>{41, 144}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{247, 0}, {41, 144}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_15.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{37, 42}, {53, 130}}</string>
+			<key>spriteOffset</key>
+			<string>{1, 18}</string>
+			<key>spriteSize</key>
+			<string>{53, 130}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{95, 0}, {53, 130}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_16.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{25, 40}, {69, 180}}</string>
+			<key>spriteOffset</key>
+			<string>{-3, -5}</string>
+			<key>spriteSize</key>
+			<string>{69, 180}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{188, 194}, {69, 180}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_17.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{26, 36}, {93, 206}}</string>
+			<key>spriteOffset</key>
+			<string>{10, -14}</string>
+			<key>spriteSize</key>
+			<string>{93, 206}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {93, 206}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_18.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{21, 34}, {95, 192}}</string>
+			<key>spriteOffset</key>
+			<string>{6, -5}</string>
+			<key>spriteSize</key>
+			<string>{95, 192}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{150, 0}, {95, 192}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_19.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{17, 16}, {103, 174}}</string>
+			<key>spriteOffset</key>
+			<string>{6, 22}</string>
+			<key>spriteSize</key>
+			<string>{103, 174}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{83, 208}, {103, 174}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_20.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{21, 9}, {99, 122}}</string>
+			<key>spriteOffset</key>
+			<string>{8, 55}</string>
+			<key>spriteSize</key>
+			<string>{99, 122}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{188, 376}, {99, 122}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_21.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{22, 42}, {77, 84}}</string>
+			<key>spriteOffset</key>
+			<string>{-2, 41}</string>
+			<key>spriteSize</key>
+			<string>{77, 84}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{350, 108}, {77, 84}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_22.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{6, 18}, {83, 100}}</string>
+			<key>spriteOffset</key>
+			<string>{-15, 57}</string>
+			<key>spriteSize</key>
+			<string>{83, 100}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{289, 328}, {83, 100}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_23.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{1, 9}, {89, 110}}</string>
+			<key>spriteOffset</key>
+			<string>{-17, 61}</string>
+			<key>spriteSize</key>
+			<string>{89, 110}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{259, 146}, {89, 110}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_24.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{17, 13}, {73, 106}}</string>
+			<key>spriteOffset</key>
+			<string>{-9, 59}</string>
+			<key>spriteSize</key>
+			<string>{73, 106}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{290, 0}, {73, 106}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_25.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{32, 50}, {69, 68}}</string>
+			<key>spriteOffset</key>
+			<string>{4, 41}</string>
+			<key>spriteSize</key>
+			<string>{69, 68}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{346, 258}, {69, 68}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_26.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{34, 50}, {67, 68}}</string>
+			<key>spriteOffset</key>
+			<string>{5, 41}</string>
+			<key>spriteSize</key>
+			<string>{67, 68}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{432, 0}, {67, 68}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>Digup_27.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{36, 47}, {65, 72}}</string>
+			<key>spriteOffset</key>
+			<string>{6, 42}</string>
+			<key>spriteSize</key>
+			<string>{65, 72}</string>
+			<key>spriteSourceSize</key>
+			<string>{125, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{365, 0}, {65, 72}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.5.2</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{512, 512}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>premultipliedAlpha</key>
+		<false/>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>digup</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>digup</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>
