@@ -16,9 +16,9 @@ namespace App.Game.Entities {
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Reference to the Entity State Machine inherited class controlling this entity.")]
+        [Tooltip("Reference to the BaseStateMachine inherited class controlling this Entity.")]
         [SerializeField] protected BaseStateMachine stateMachine;
-        [Tooltip("Reference to the Animator attached to the Entity.")]
+        [Tooltip("Reference to the Animator attached to this Entity.")]
         [SerializeField] public Animator ani;
 
         // * ATTRIBUTES

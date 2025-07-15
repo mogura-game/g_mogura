@@ -6,10 +6,11 @@ namespace App.Game.Entities {
     /// Base class for implementing States using ScriptableObject.
     /// Inherit from this class to define specific transition and behaviours for each State.
     /// </summary>
-        // ? DEBUG======================================================================================================================================
+    // TODO: Update naming convention for expresion-bodied properties, matching global entity attributes and entity-specific attributes
+    // ? DEBUG======================================================================================================================================
         [SerializeField] protected bool DEBUG = false;
 
-        // ? PARAMETERS=================================================================================================================================
+    // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
         [Tooltip("Reference to the active state machine.")]
@@ -19,35 +20,26 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
         [SerializeField] public EntityStates id;
-        [Tooltip("AnimationClip to play while on this State.")]
+        [Tooltip("AnimationClip to play on entering this State.")]
         [SerializeField] public AnimationClip clip;
 
         // * INTERNAL
 
-        // ? BASE METHODS===============================================================================================================================
+    // ? BASE METHODS===============================================================================================================================
 
-        // ? CUSTOM METHODS=============================================================================================================================
+    // ? CUSTOM METHODS=============================================================================================================================
         
-        // ? EVENT METHODS==============================================================================================================================
-        /// <summary>
-        /// Executed right at the start of the State.
-        /// </summary>
+    // ? EVENT METHODS==============================================================================================================================
         public virtual void OnEnter(BaseStateMachine stateMachine) {
             this.stateMachine = stateMachine;
 
             if (DEBUG) Debug.Log($"[S] State " + this + " started");
         }
- 
-        /// <summary>
-        /// Executed from every StateMachine fixed update call.
-        /// </summary>
+
         public virtual void OnExecute() {
             if (DEBUG) Debug.Log($"[S] State " + this + " executed");
         }
 
-        /// <summary>
-        /// Executed just before ending the State.
-        /// </summary>
         public virtual void OnExit() {
             if (DEBUG) Debug.Log($"[S] State " + this + " ended");
         }
