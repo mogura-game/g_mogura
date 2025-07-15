@@ -70,6 +70,7 @@ namespace App.Game.Entities {
     [Serializable]
     public enum EntityStates {
         idle,
-        move
+        move,
+        dig,
     }
 }
