@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb8e5e0484317c847b2179017095334e, type: 3}
-  m_Name: move
+  m_Script: {fileID: 11500000, guid: 4b55b3910a96bf7418e4d8128205a87d, type: 3}
+  m_Name: dig_in
   m_EditorClassIdentifier: 
-  DEBUG: 0
-  id: 1
+  DEBUG: 1
+  stateMachine: {fileID: 0}
+  id: 2
+  clip: {fileID: 0}
+  timeOnState: 0
