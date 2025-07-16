@@ -24,7 +24,7 @@ namespace App.Game.Entities.Mogura {
         
     // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
-            this.PC.rb.linearVelocity = Vector2.zero;
+            this.PC.ResetPhyisics();
             
             base.OnEnter(stateMachine);
         }
