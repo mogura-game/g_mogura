@@ -6,7 +6,6 @@ namespace App.Game.Entities {
     /// Base class for implementing StateMachines from ScriptableObject States.
     /// Inherit from this class to define specific behaviors for each State Machine.
     /// </summary>
-    [RequireComponent(typeof(BaseController))]
     public abstract class BaseStateMachine {
     // ? DEBUG======================================================================================================================================
         [Tooltip("Enables debugging logs for this object.")]
