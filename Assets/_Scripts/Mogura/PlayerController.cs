@@ -22,7 +22,7 @@ namespace App.Game.Entities.Mogura {
         // * ATTRIBUTES
         [Header("Attibutes")]
         [Tooltip("")]
-        [SerializeField] private float speed = 1.0f;
+        [SerializeField, Range(0, 1)] private float speed = 1.0f;
 
         // * INTERNAL
         [Header("Internal")]
@@ -45,8 +45,8 @@ namespace App.Game.Entities.Mogura {
         
         protected override void FixedUpdate() {
             // Evita aplicar fuerza si no hay input
-            if (this.inputDirection.sqrMagnitude > 0.01f) {
-                this.rb.AddForce(10 * speed * inputDirection.x * Vector2.right, ForceMode2D.Force);
+            if (this.inputDirection.sqrMagnitude >= 0.01f) {
+                this.rb.AddForce(50 * this.speed * this.inputDirection.x * Vector2.right, ForceMode2D.Force);
             }
 
             base.FixedUpdate();
@@ -72,6 +72,13 @@ namespace App.Game.Entities.Mogura {
             if (DEBUG && (context.performed || context.canceled)) Debug.Log("[PI] : Dig mode started");
 
             this.stateMachine.ChangeState(EntityStates.dig);
+        }
+
+        /// <summary>
+        /// Returns velocities, forces and rotations to 0.
+        /// </summary>
+        public void ResetPhyisics() {
+            this.rb.linearVelocity = Vector2.zero;
         }
         
         public override void UpdateStateAnimation(EntityStates id) {
