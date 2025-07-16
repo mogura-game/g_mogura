@@ -20,7 +20,6 @@ namespace App.Game.Entities {
         
     // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
-
             base.OnEnter(stateMachine);
         }
     }

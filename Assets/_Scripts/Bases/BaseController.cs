@@ -29,7 +29,7 @@ namespace App.Game.Entities {
         public Vector2 Velocity => this.rb.linearVelocity;
 
         // * INTERNAL
-        [SerializeField] protected BaseStateMachine stateMachine;
+        protected BaseStateMachine stateMachine;
         public bool actionsUnlocked = true;
         public bool movementUnlocked = true;
 
@@ -56,6 +56,6 @@ namespace App.Game.Entities {
         /// Function called from States to ask for dynamic animation changes to BaseController.
         /// Inherit to handle custom naming logic and sending concatenated strings.
         /// </summary>
-        public abstract void UpdateStateAnimation(EntityStates id);
+        public abstract void UpdateStateAnimation(EntityState id);
     }
 }

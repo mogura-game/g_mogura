@@ -18,9 +18,11 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
-        [SerializeField] public EntityStates id;
-        [SerializeField] protected float stopThreshold;
-        [SerializeField] protected float fallThreshold;
+        [SerializeField] public EntityState id;
+        [Tooltip("Min velocity to set Player to Idle.")]
+        [SerializeField] protected float stopThreshold = 0.25f;
+        [Tooltip("Min velocity to set Player to Fall.")]
+        [SerializeField] protected float fallThreshold = 0.1f;
 
         // * INTERNAL
 

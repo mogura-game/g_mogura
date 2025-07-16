@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: idle
   m_EditorClassIdentifier: 
   DEBUG: 0
-  stateMachine: {fileID: 0}
   id: 0
-  clip: {fileID: 7400000, guid: c90475145e28bfb4b8f79235d710bb06, type: 2}
