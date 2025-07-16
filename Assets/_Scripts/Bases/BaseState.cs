@@ -19,6 +19,8 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
         [SerializeField] public EntityState id;
+        [Tooltip("Defines default gravity scale on entering the State.")]
+        [SerializeField, Range(0, 5)] protected float baseGravity = 1.0f;
         [Tooltip("Min velocity to set Player to Idle.")]
         [SerializeField] protected float stopThreshold = 0.25f;
         [Tooltip("Min velocity to set Player to Fall.")]
