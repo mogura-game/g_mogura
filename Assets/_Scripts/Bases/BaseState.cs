@@ -19,10 +19,15 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("Identifier for this state.")]
         [SerializeField] public EntityStates id;
+        [SerializeField] protected float stopThreshold;
+        [SerializeField] protected float fallThreshold;
 
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
+        public virtual void OnExecute() {
+            if (DEBUG) Debug.Log($"[S] State " + this + " executed");
+        }
 
     // ? CUSTOM METHODS=============================================================================================================================
 
@@ -33,10 +38,6 @@ namespace App.Game.Entities {
             this.stateMachine.RequestStateAnimation();
 
             if (DEBUG) Debug.Log($"[S] State " + this + " entered");
-        }
-
-        public virtual void OnExecute() {
-            if (DEBUG) Debug.Log($"[S] State " + this + " executed");
         }
 
         public virtual void OnExit() {

@@ -20,6 +20,12 @@ namespace App.Game.Entities.Mogura {
         private PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
 
     // ? BASE METHODS===============================================================================================================================
+        public override void OnExecute () {
+            if (this.timeOnState > 5.0f) this.SM.ChangeState(EntityStates.idle);
+            this.timeOnState += Time.fixedDeltaTime;
+
+            base.OnExecute();
+        }
 
     // ? CUSTOM METHODS=============================================================================================================================
         
@@ -28,13 +34,6 @@ namespace App.Game.Entities.Mogura {
             this.PC.ResetPhyisics();
             
             base.OnEnter(stateMachine);
-        }
-
-        public override void OnExecute () {
-            if (this.timeOnState > 5.0f) this.SM.ChangeState(EntityStates.idle);
-            this.timeOnState += Time.fixedDeltaTime;
-
-            base.OnExecute();
         }
 
         public override void OnExit() {

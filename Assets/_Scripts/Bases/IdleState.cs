@@ -15,9 +15,6 @@ namespace App.Game.Entities {
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
-        private void Awake() {
-            this.id = EntityStates.idle;
-        }
 
     // ? CUSTOM METHODS=============================================================================================================================
         
@@ -26,6 +23,5 @@ namespace App.Game.Entities {
 
             base.OnEnter(stateMachine);
         }
-        
     }
 }

@@ -19,6 +19,11 @@ namespace App.Game.Entities.Mogura {
         private PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
 
     // ? BASE METHODS===============================================================================================================================
+        public override void OnExecute () {
+            if (this.PC.Velocity.Abs().x < this.stopThreshold) this.SM.ChangeState(EntityStates.idle); 
+
+            base.OnExecute();
+        }
 
     // ? CUSTOM METHODS=============================================================================================================================
         
@@ -26,12 +31,5 @@ namespace App.Game.Entities.Mogura {
         public override void OnEnter(BaseStateMachine stateMachine) {
             base.OnEnter(stateMachine);
         }
-
-        public override void OnExecute () {
-            if (this.PC.Velocity.Abs().x < 0.25f) this.SM.ChangeState(EntityStates.idle); 
-
-            base.OnExecute();
-        }
-        
     }
 }
