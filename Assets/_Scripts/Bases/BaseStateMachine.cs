@@ -30,7 +30,7 @@ namespace App.Game.Entities {
 
     // ? BASE METHODS===============================================================================================================================
         public virtual void Initialize() {
-            this.states = this.baseController.BuildStatesDictionary();
+            this.states = this.baseController?.BuildStatesDictionary();
 
             this.ChangeState(this.initialState);
         }
