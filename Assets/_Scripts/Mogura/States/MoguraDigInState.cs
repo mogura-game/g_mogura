@@ -31,14 +31,15 @@ namespace App.Game.Entities.Mogura {
         
     // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
-            this.PC.ResetPhyisics();
-            
             base.OnEnter(stateMachine);
+            
+            this.SM.DisableActionsLock();
+            this.SM.DisableMovementLock();
+            this.timeOnState = 0.0f;
+            this.PC?.ResetPhyisics();
         }
 
         public override void OnExit() {
-            this.timeOnState = 0.0f;
-
             base.OnExit();
         }
     }
