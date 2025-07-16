@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   id: 1
+  baseGravity: 1
   stopThreshold: 0.25
   fallThreshold: 0.1

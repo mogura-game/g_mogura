@@ -17,7 +17,6 @@ namespace App.Game.Entities.Mogura {
         [SerializeField] private float digDuration = 0.25f;
         
         // * INTERNAL
-        private PlayerController PC => this.stateMachine.baseController as PlayerController;
         private PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
         [SerializeField] private float timeOnState = 0.0f;
 
@@ -30,20 +29,16 @@ namespace App.Game.Entities.Mogura {
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
-        
-    // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
             base.OnEnter(stateMachine);
             
             this.timeOnState = 0.0f;
-            this.SM?.SetActionsLock(false);
-            this.SM?.SetMovementLock(false);
+            this.SM?.SetActionsLock(true);
+            this.SM?.SetMovementLock(true);
             this.SM?.SetStateGravity(this.baseGravity);
-            this.PC?.ResetPhysics();
+            this.SM?.ResetPhysics();
         }
-
-        public override void OnExit() {
-            base.OnExit();
-        }
+        
+    // ? EVENT METHODS==============================================================================================================================
     }
 }
