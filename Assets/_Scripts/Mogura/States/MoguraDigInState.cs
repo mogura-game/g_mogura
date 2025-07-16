@@ -4,7 +4,7 @@ namespace App.Game.Entities.Mogura {
     /// <summary>
     /// Mogura DigEnter class for managing custom State transitions.
     /// </summary>
-    [CreateAssetMenu(menuName = "States/Mogura/Dig In", fileName = "MoguraDigInState")]
+    [CreateAssetMenu(menuName = "States/Mogura/Dig-In", fileName = "MoguraDigInState")]
     public class MoguraDigInState : BaseState {
     // ? DEBUG======================================================================================================================================
 
@@ -12,6 +12,7 @@ namespace App.Game.Entities.Mogura {
         // * REFERENCES
 
         // * ATTRIBUTES
+        [Header("Attributes")]
         [SerializeField] private float timeOnState = 0.0f;
         
         // * INTERNAL

@@ -12,7 +12,7 @@ namespace App.Game.Entities {
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Reference to the active state machine.")]
+        [Tooltip("Reference to the active StateMachine.")]
         [SerializeField] protected BaseStateMachine stateMachine;
 
         // * ATTRIBUTES

@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace App.Game.Entities {
     /// <summary>
-    /// Base class for implementing a default Move State.
+    /// Base class for implementing a default Move State from BaseState.
     /// </summary>
-    [CreateAssetMenu(menuName = "States/BaseMove", fileName = "MoveState")]
     public abstract class MoveState : BaseState {
     // ? DEBUG======================================================================================================================================
 

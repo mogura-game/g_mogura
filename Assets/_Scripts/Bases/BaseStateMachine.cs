@@ -15,9 +15,9 @@ namespace App.Game.Entities {
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Default State for State Machine to execute.")]
+        [Tooltip("Default State for this StateMachine to execute.")]
         [SerializeField] protected EntityStates initialState;
-        [Tooltip("Reference to the EntityController inherited class this machine is assigned to.")]
+        [Tooltip("Reference to the Controller script this machine is assigned to.")]
         [SerializeField] public BaseController baseController;
 
         // * ATTRIBUTES
