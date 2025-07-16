@@ -19,6 +19,8 @@ namespace App.Game.Entities.Mogura {
         [Header("Attibutes")]
         [Tooltip("Determines the current Player speed value. (Ranging from 0 to 1)")]
         [SerializeField, Range(0, 1)] private float speed = 1.0f;
+        [Tooltip(".")]
+        public Vector2 InputDirection => this.inputDirection;
 
         // * INTERNAL
         private Vector2 inputDirection;
@@ -28,22 +30,19 @@ namespace App.Game.Entities.Mogura {
             this.stateMachine = new PlayerStateMachine();
             this.stateMachine.baseController = this;
 
-            if (!this.rb) Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
-            else this.GetComponent<Rigidbody2D>();
+            if (this.rb) this.GetComponent<Rigidbody2D>();
+            else Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
         }
         
         protected override void FixedUpdate() {
-            // Evita aplicar fuerza si no hay input
-            if (this.movementUnlocked && this.inputDirection.sqrMagnitude >= 0.01f) {
-                this.rb.AddForce(100 * this.speed * this.inputDirection.x * Vector2.right, ForceMode2D.Force);
-            }
-
             base.FixedUpdate();
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
+        public override void SetMoveVelocity(Vector2 movement) => this.rb.linearVelocity = movement * this.speed;
+
         public override void UpdateStateAnimation(EntityState id) {
             this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
         }
@@ -64,19 +63,18 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnToggleDig(InputAction.CallbackContext context) {
-            if (!this.actionsUnlocked) return;
-            else {
-                if (context.started) {
-                     if (DEBUG) Debug.Log("[PI] : Dig mode started");
-                    this.stateMachine.ChangeState(EntityState.dig_in);
-                }
+            if (this.actionsLocked) return;
+            else if (context.started) {
+                if (DEBUG) Debug.Log("[PI] : Dig mode started");
+                this.stateMachine.ChangeState(EntityState.dig_in);
             }
         }
 
         /// <summary>
-        /// Returns velocities, forces and rotations to 0.
+        /// Returns Rigidbody2D velocity, forces and rotations to 0.
         /// </summary>
         public void ResetPhysics() {
+            //this.rb.SetRotation(0);
             this.rb.linearVelocity = Vector2.zero;
         }
     }

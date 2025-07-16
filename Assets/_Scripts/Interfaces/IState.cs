@@ -13,22 +13,22 @@ namespace App.Game.Entities {
         // * INTERNAL
         
     // ? BASE METHODS===============================================================================================================================
+        /// <summary>
+        /// Method executed from every StateMachine fixed update call.
+        /// </summary>
+        void OnExecute();
 
     // ? CUSTOM METHODS=============================================================================================================================
-
-    // ? EVENT METHODS==============================================================================================================================
         /// <summary>
-        /// Executed right on entering the State.
+        /// Method executed right on entering the State.
         /// </summary>
         void OnEnter(BaseStateMachine stateMachine);
         /// <summary>
-        /// Executed from every StateMachine fixed update call.
-        /// </summary>
-        void OnExecute();
-        /// <summary>
-        /// Executed just before exiting the State.
+        /// Method executed just before exiting the State.
         /// </summary>
         void OnExit();
+
+    // ? EVENT METHODS==============================================================================================================================
 
     }
 }

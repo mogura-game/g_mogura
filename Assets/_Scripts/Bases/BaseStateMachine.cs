@@ -24,11 +24,20 @@ namespace App.Game.Entities {
         [SerializeField] protected EntityState initialState;
         [Tooltip("Displays currently executing State.")]
         [SerializeField] public BaseState currentState;
+        [Tooltip("Property to get Entity Rigidbody2D current linear velocity.")]
+        public Vector2 GetEntityVelocity => this.baseController?.GetCurrentLinearVelocity ?? Vector2.zero;
+        [Tooltip("Property to get Entity movement lock value.")]
+        public bool MovementLocked => this.baseController?.movementLocked ?? false;
+        [Tooltip("Property to get Entity actions lock value.")]
+        public bool ActionsLocked => this.baseController?.actionsLocked ?? false;
 
         // * INTERNAL
         private Dictionary<EntityState, BaseState> states;
 
     // ? BASE METHODS===============================================================================================================================
+        /// <summary>
+        /// Initializes this Entity States dictionary and enters initial State.
+        /// </summary>
         public virtual void Initialize() {
             this.states = this.baseController?.BuildStatesDictionary();
 
@@ -48,7 +57,7 @@ namespace App.Game.Entities {
         /// Replaces current State to a new one.
         /// State name must be defined in EntityStates enum.
         /// </summary>
-        /// <param name="newState">State to transition to.</param>
+        /// <param name="newState">Next transition State set to.</param>
         public virtual void ChangeState(EntityState newState) {
             BaseState nextState = this.states[newState];
             if (this.currentState?.id == nextState.id) return;
@@ -61,12 +70,42 @@ namespace App.Game.Entities {
             this.currentState?.OnEnter(this);
         }
 
+        /// <summary>
+        /// Sends to Controller animation updates to communicate with Animator. 
+        /// </summary>
         public void RequestStateAnimation() {
             this.baseController?.UpdateStateAnimation(this.currentState.id);
         }
+        
+        /// <summary>
+        /// Resets to 0 both Entity rotation and velocity Ridigbody2D values.
+        /// </summary>
+        public void ResetPhysics() {
+            //this.baseController?.ResetRotation();
+            this.baseController?.SetMoveVelocity(Vector2.zero);
+        }
 
-        public void SetMovementLock(bool unlocked) => this.baseController.movementUnlocked = unlocked;
-        public void SetActionsLock(bool unlocked) => this.baseController.actionsUnlocked = unlocked;
+        /// <summary>
+        /// Sends direction of movement force to this Entity Controller.
+        /// </summary>
+        public void MoveDirection(Vector2 direction) => this.baseController?.SetMoveForce(direction);
+
+        /// <summary>
+        /// Sends the State movement lock value to this Entity Controller.
+        /// </summary>
+        /// <param name="locked">Value set movement lock to.</param>
+        public void SetMovementLock(bool locked) => this.baseController.movementLocked = locked;
+        
+        /// <summary>
+        /// Sends the State actionss lock value to this Entity Controller.
+        /// </summary>
+        /// <param name="locked">Value set actions lock to.</param>
+        public void SetActionsLock(bool locked) => this.baseController.actionsLocked = locked;
+        
+        /// <summary>
+        /// Sends the scale gravity value to this Entity Controller.
+        /// </summary>
+        /// <param name="scale">Value to set gravity scale.</param>
         public void SetStateGravity(float scale) => this.baseController.SetGravityScale(scale);
     }
 

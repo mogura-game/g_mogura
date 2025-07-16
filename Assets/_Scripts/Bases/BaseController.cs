@@ -27,15 +27,15 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("List of all available States this Entity can execute.")]
         [SerializeField] private BaseState[] entityStates;
-        [Tooltip("Player Rigidbody linear velocity property shorthand acting as a Getter function.")]
-        public Vector2 Velocity => this.rb.linearVelocity;
+        [Tooltip("Player Rigidbody get linear velocity property shorthand.")]
+        public Vector2 GetCurrentLinearVelocity => this.rb.linearVelocity;
         [Tooltip("Defines whether the Player is facing right or not.")]
         public bool facingRight = true;
 
         // * INTERNAL
         protected BaseStateMachine stateMachine;
-        public bool actionsUnlocked = true;
-        public bool movementUnlocked = true;
+        public bool actionsLocked = false;
+        public bool movementLocked = false;
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {
@@ -52,8 +52,8 @@ namespace App.Game.Entities {
         }
 
         protected virtual void FixedUpdate() {
-            if (this.Velocity.x < 0.0f) this.facingRight = false;
-            else if (this.Velocity.x > 0.0f) this.facingRight = true;
+            if (this.GetCurrentLinearVelocity.x < 0.0f) this.facingRight = false;
+            else if (this.GetCurrentLinearVelocity.x > 0.0f) this.facingRight = true;
 
             this.stateMachine?.Execute();
         }
@@ -83,6 +83,17 @@ namespace App.Game.Entities {
             if (missing.Any()) Debug.LogError($"[BC] Missing State impletations: {string.Join(", ", missing)}");
         }
 
+    // ? EVENT METHODS==============================================================================================================================
+        /// <summary>
+        /// Method called from StateMachine to ask for dynamic animation clip per State.
+        /// Inherit to handle custom naming logic and sending concatenated strings.
+        /// </summary>
+        public abstract void UpdateStateAnimation(EntityState id);
+        /// <summary>
+        /// Method called from StateMachine to handle custom gravity changes per State.
+        /// </summary>
+        public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
+    
         /// <summary>
         /// Returns a Dictionary using EntityStates as Key with its respective BaseState value from entityStates array.
         /// Called fron BaseStateMachine to receive the actual and validated State list ready to use.
@@ -102,16 +113,9 @@ namespace App.Game.Entities {
             if (DEBUG) Debug.Log($"[BC] Dictionary built with {dictionary.Count} States.");
             return dictionary;
         }
-
-    // ? EVENT METHODS==============================================================================================================================
-        /// <summary>
-        /// Function called from StateMachine to ask for dynamic animation clip per State.
-        /// Inherit to handle custom naming logic and sending concatenated strings.
-        /// </summary>
-        public abstract void UpdateStateAnimation(EntityState id);
-        /// <summary>
-        /// Function called from StateMachine to handle custom gravity changes per State.
-        /// </summary>
-        public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
+        
+        public virtual void SetMoveVelocity(Vector2 movement) => this.rb.linearVelocity = movement;
+        
+        public virtual void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement, ForceMode2D.Force);
     }
 }
