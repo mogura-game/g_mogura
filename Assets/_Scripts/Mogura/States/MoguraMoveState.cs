@@ -22,7 +22,7 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            if (this.PC.Velocity.Abs().x < this.stopThreshold) this.SM.ChangeState(EntityState.idle); 
+            if (this.PC?.Velocity.Abs().x < this.stopThreshold) this.SM?.ChangeState(EntityState.idle); 
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
@@ -31,8 +31,8 @@ namespace App.Game.Entities.Mogura {
         public override void OnEnter(BaseStateMachine stateMachine) {
             base.OnEnter(stateMachine);
             
-            this.SM.EnableActionsLock();
-            this.SM.EnableMovementLock();
+            this.SM?.SetActionsLock(true);
+            this.SM?.SetMovementLock(true);
         }
     }
 }
