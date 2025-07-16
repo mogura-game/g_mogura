@@ -13,11 +13,11 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attributes")]
-        [SerializeField] private float timeOnState = 0.0f;
         
         // * INTERNAL
         private PlayerController PC => this.stateMachine.baseController as PlayerController;
         private PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
+        [SerializeField] private float timeOnState = 0.0f;
 
     // ? BASE METHODS===============================================================================================================================
         public override void OnExecute () {
