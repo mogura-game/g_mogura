@@ -109,5 +109,9 @@ namespace App.Game.Entities {
         /// Inherit to handle custom naming logic and sending concatenated strings.
         /// </summary>
         public abstract void UpdateStateAnimation(EntityState id);
+        /// <summary>
+        /// Function called from StateMachine to handle custom gravity changes per State.
+        /// </summary>
+        public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
     }
 }

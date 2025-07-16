@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   id: 2
+  baseGravity: 0
   stopThreshold: 0.25
   fallThreshold: 0.1
   digDuration: 0.25

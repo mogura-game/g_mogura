@@ -67,6 +67,7 @@ namespace App.Game.Entities {
 
         public void SetMovementLock(bool unlocked) => this.baseController.movementUnlocked = unlocked;
         public void SetActionsLock(bool unlocked) => this.baseController.actionsUnlocked = unlocked;
+        public void SetStateGravity(float scale) => this.baseController.SetGravityScale(scale);
     }
 
     /// <summary>
