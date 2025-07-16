@@ -485,7 +485,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 10
+  m_LinearDamping: 16
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -862,14 +862,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DEBUG: 0
+  rb: {fileID: 652483336}
   baseAnimator: {fileID: 652483344}
   entityStatesList:
   - {fileID: 11400000, guid: 52e3b9add2ecfe54c8c5dc31f1078749, type: 2}
   - {fileID: 11400000, guid: 259e21c65675f174ca361b6c33a7c2cc, type: 2}
   - {fileID: 11400000, guid: 30e3a8b02f2c367438a5c505dc97ae0d, type: 2}
-  rb: {fileID: 652483336}
+  actionsUnlocked: 1
+  movementUnlocked: 1
   speed: 1
-  inputDirection: {x: 0, y: 0}
 --- !u!114 &652483344
 MonoBehaviour:
   m_ObjectHideFlags: 0

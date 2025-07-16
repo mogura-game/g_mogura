@@ -17,7 +17,7 @@ namespace App.Game.Entities {
         // * REFERENCES
         [Header("References")]
         [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
-        protected Rigidbody2D rb;
+        [SerializeField] protected Rigidbody2D rb;
         [Tooltip("Reference to the Animator script attached to this Entity.")]
         [SerializeField] protected BaseAnimator baseAnimator;
 
@@ -30,6 +30,8 @@ namespace App.Game.Entities {
 
         // * INTERNAL
         [SerializeField] protected BaseStateMachine stateMachine;
+        public bool actionsUnlocked = true;
+        public bool movementUnlocked = true;
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {}
