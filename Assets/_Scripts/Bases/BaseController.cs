@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using System;
 
 namespace App.Game.Entities {
     /// <summary>
@@ -24,8 +26,8 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("List of all available States this Entity can execute.")]
-        [SerializeField] public List<BaseState> entityStatesList = new List<BaseState>();
-        [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
+        [SerializeField] private BaseState[] entityStates;
+        [Tooltip("Player Rigidbody linear velocity property shorthand acting as a Getter function.")]
         public Vector2 Velocity => this.rb.linearVelocity;
 
         // * INTERNAL
@@ -34,7 +36,10 @@ namespace App.Game.Entities {
         public bool movementUnlocked = true;
 
     // ? BASE METHODS===============================================================================================================================
-        protected virtual void Awake() {}
+        protected virtual void Awake() {
+            this.ValidateStates();
+            this.BuildStatesDictionary();
+        }
 
         protected virtual void Start() {
             this.stateMachine?.Initialize();
@@ -49,7 +54,50 @@ namespace App.Game.Entities {
             this.stateMachine?.Execute();
         }
 
+        private void OnValidate() {
+            this.ValidateStates();
+        }
+
     // ? CUSTOM METHODS=============================================================================================================================
+        /// <summary>
+        /// Validates that all EntityStates enum States are present in the entityStates array.
+        /// Sends error logs for each missing or null State references.
+        /// </summary>
+        private void ValidateStates() {
+            for (int i = 0; i < this.entityStates.Count(); i++) {
+                if (!this.entityStates.ElementAt(i)) {
+                    Debug.LogError($"[BC] Null State entry at: {i}");
+                    return;
+                }
+            }
+
+            List<EntityState> enumValues = Enum.GetValues(typeof(EntityState)).Cast<EntityState>().ToList(); //Listed States
+            List<EntityState> assignedValues = this.entityStates.Where(s => s != null).Select(s => s.id).ToList(); //Assigned States
+
+            List<EntityState> missing = enumValues.Except(assignedValues).ToList();
+            
+            if (missing.Any()) Debug.LogError($"[BC] Missing State impletations: {string.Join(", ", missing)}");
+        }
+
+        /// <summary>
+        /// Returns a Dictionary using EntityStates as Key with its respective BaseState value from entityStates array.
+        /// Called fron BaseStateMachine to receive the actual and validated State list ready to use.
+        /// </summary>
+        public Dictionary<EntityState, BaseState> BuildStatesDictionary() {
+            Dictionary<EntityState, BaseState> dictionary = new Dictionary<EntityState, BaseState>();
+
+            foreach (BaseState state in this.entityStates) {
+                if (state is null) {
+                    Debug.LogError("[BC] Null State in entityStates array.");
+                    continue;
+                } else {
+                    dictionary.Add(state.id, state);
+                }
+            }
+
+            if (DEBUG) Debug.Log($"[BC] Dictionary built with {dictionary.Count} States.");
+            return dictionary;
+        }
 
     // ? EVENT METHODS==============================================================================================================================
         /// <summary>

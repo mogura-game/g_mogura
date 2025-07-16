@@ -864,7 +864,7 @@ MonoBehaviour:
   DEBUG: 0
   rb: {fileID: 652483336}
   baseAnimator: {fileID: 652483344}
-  entityStatesList:
+  entityStates:
   - {fileID: 11400000, guid: 52e3b9add2ecfe54c8c5dc31f1078749, type: 2}
   - {fileID: 11400000, guid: 259e21c65675f174ca361b6c33a7c2cc, type: 2}
   - {fileID: 11400000, guid: 30e3a8b02f2c367438a5c505dc97ae0d, type: 2}

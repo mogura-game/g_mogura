@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -25,9 +26,12 @@ namespace App.Game.Entities {
         [SerializeField] public BaseState currentState;
 
         // * INTERNAL
+        private Dictionary<EntityState, BaseState> states;
 
     // ? BASE METHODS===============================================================================================================================
         public virtual void Initialize() {
+            this.states = this.baseController.BuildStatesDictionary();
+
             this.ChangeState(this.initialState);
         }
 
@@ -45,8 +49,8 @@ namespace App.Game.Entities {
         /// State name must be defined in EntityStates enum.
         /// </summary>
         /// <param name="newState">State to transition to.</param>
-        public virtual void ChangeState(EntityStates newState) {
-            BaseState nextState = this.baseController?.entityStatesList[(int)newState];
+        public virtual void ChangeState(EntityState newState) {
+            BaseState nextState = this.states[newState];
             if (this.currentState?.id == nextState.id) return;
 
             this.currentState?.OnExit();
