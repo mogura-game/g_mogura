@@ -15,7 +15,7 @@ namespace App.Game.Entities {
         // * REFERENCES
         [Header("References")]
         [Tooltip("Default State for this StateMachine to execute.")]
-        [SerializeField] protected EntityStates initialState;
+        [SerializeField] protected EntityState initialState;
         [Tooltip("Reference to the Controller script this machine is assigned to.")]
         [SerializeField] public BaseController baseController;
 
@@ -67,7 +67,7 @@ namespace App.Game.Entities {
     /// Used for identifying and indexing States.
     /// </summary>
     [Serializable]
-    public enum EntityStates {
+    public enum EntityState {
         idle,
         move,
         dig,

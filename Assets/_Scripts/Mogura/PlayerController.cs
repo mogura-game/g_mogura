@@ -76,7 +76,7 @@ namespace App.Game.Entities.Mogura {
             this.rb.linearVelocity = Vector2.zero;
         }
         
-        public override void UpdateStateAnimation(EntityStates id) {
+        public override void UpdateStateAnimation(EntityState id) {
             this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
         }
     }
