@@ -86,6 +86,6 @@ namespace App.Game.Entities {
     public enum EntityState {
         idle,
         move,
-        dig,
+        dig_in,
     }
 }
