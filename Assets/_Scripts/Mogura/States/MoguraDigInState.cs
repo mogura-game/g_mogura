@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Mogura DigEnter class for managing custom State transitions.
+    /// Mogura dig-in State class for managing custom State transitions.
     /// </summary>
     [CreateAssetMenu(menuName = "States/Mogura/Dig-In", fileName = "MoguraDigInState")]
     public class MoguraDigInState : BaseState {

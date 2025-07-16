@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Mogura MoveState class for managing custom State transitions.
+    /// Mogura move State class for managing custom State transitions.
     /// </summary>
     [CreateAssetMenu(menuName = "States/Mogura/Move", fileName = "MoguraMoveState")]
     public class MoguraMoveState : PlayerState {
@@ -22,7 +22,7 @@ namespace App.Game.Entities.Mogura {
 
             this.MoveFromInput();
 
-            if (this.PlayerVelocity.Abs().x < this.stopThreshold) this.SM?.ChangeState(EntityState.idle);
+            if (Mathf.Abs(this.PlayerVelocity.x) < this.stopThreshold) this.SM?.ChangeState(EntityState.idle);
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
