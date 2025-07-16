@@ -46,8 +46,8 @@ namespace App.Game.Entities {
         /// </summary>
         /// <param name="newState">State to transition to.</param>
         public virtual void ChangeState(EntityStates newState) {
-            BaseState nextState = this.baseController.entityStatesList[(int)newState];
-            if (this.currentState && this.currentState.id == nextState.id) return;
+            BaseState nextState = this.baseController?.entityStatesList[(int)newState];
+            if (this.currentState?.id == nextState.id) return;
 
             this.currentState?.OnExit();
 
@@ -58,7 +58,7 @@ namespace App.Game.Entities {
         }
 
         public void RequestStateAnimation() {
-            this.baseController.UpdateStateAnimation(this.currentState.id);
+            this.baseController?.UpdateStateAnimation(this.currentState.id);
         }
     }
 
