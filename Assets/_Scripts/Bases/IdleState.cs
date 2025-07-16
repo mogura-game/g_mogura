@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace App.Game.Entities {
     /// <summary>
-    /// Base class for implementing a default Idle State using ScriptableObject.
+    /// Base class for implementing a default Idle State from BaseState.
     /// </summary>
-    [CreateAssetMenu(menuName = "States/BaseIdle", fileName = "IdleState")]
     public abstract class IdleState : BaseState {
     // ? DEBUG======================================================================================================================================
 

@@ -14,17 +14,20 @@ namespace App.Game.Entities {
         // * REFERENCES
 
         // * ATTRIBUTES
-        [Tooltip("Reference to the Animator attached to this Entity.")]
+        [Header("Attributes")]
+        [Tooltip("Reference to the Animator component attached to this Entity.")]
         [SerializeField] public Animator ani;
 
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
-        protected virtual void Awake() { }
+        //protected virtual void Awake() { }
         
-        protected virtual void Start() { }
+        //protected virtual void Start() { }
         
-        protected virtual void Update() { }
+        //protected virtual void Update() { }
+        
+        //protected virtual void FixedUpdate() { }
 
     // ? CUSTOM METHODS=============================================================================================================================
         public virtual void PlayAnimation(string stateId) {

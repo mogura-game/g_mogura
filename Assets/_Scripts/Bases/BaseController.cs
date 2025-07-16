@@ -16,17 +16,21 @@ namespace App.Game.Entities {
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Reference to the BaseStateMachine inherited class controlling this Entity.")]
+        [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
+        protected Rigidbody2D rb;
+        [Tooltip("Reference to the StateMachine script controlling this Entity.")]
         [SerializeField] protected BaseStateMachine stateMachine;
-        //[Tooltip("Reference to the Animator attached to this Entity.")]
+        [Tooltip("Reference to the Animator script attached to this Entity.")]
         [SerializeField] public BaseAnimator baseAnimator;
 
         // * ATTRIBUTES
-        //[Tooltip("List of all available States this BaseStateMachine inherited class can execute.")]
+        [Header("Attributes")]
+        [Tooltip("List of all available States this Entity can execute.")]
         [SerializeField] public List<BaseState> entityStatesList = new List<BaseState>();
+        [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
+        public Vector2 Velocity => this.rb.linearVelocity;
 
         // * INTERNAL
-        protected EntityStates currentState => this.stateMachine.currentState.id;
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {}
@@ -38,15 +42,19 @@ namespace App.Game.Entities {
             else Debug.LogError("[EC] No StateMachine assigned!");
         }
 
+        //protected virtual void Update() { }
+
         protected virtual void FixedUpdate() {
             this.stateMachine?.Execute();
         }
 
-        protected virtual void Update() {}
-
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
+        /// <summary>
+        /// Function called from States to ask for dynamic animation changes to BaseController.
+        /// Inherit to handle custom naming logic and sending concatenated strings.
+        /// </summary>
         public abstract void UpdateStateAnimation(EntityStates id);
     }
 }

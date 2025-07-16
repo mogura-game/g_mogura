@@ -1,5 +1,6 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
@@ -15,19 +16,14 @@ namespace App.Game.Entities.Mogura {
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
-        [Header("References")]
-        [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
-        public Rigidbody2D rb;
 
         // * ATTRIBUTES
         [Header("Attibutes")]
-        [Tooltip("")]
+        [Tooltip("Determines the current Player speed value. (Ranging from 0 to 1)")]
         [SerializeField, Range(0, 1)] private float speed = 1.0f;
 
         // * INTERNAL
-        [Header("Internal")]
-        //[Tooltip("")]
-        [SerializeField] private Vector2 inputDirection;
+        private Vector2 inputDirection;
 
     // ? BASE METHODS===============================================================================================================================
         protected override void Awake() {
@@ -36,11 +32,6 @@ namespace App.Game.Entities.Mogura {
 
             if (!this.rb) Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
             else this.GetComponent<Rigidbody2D>();
-        }
-        
-        protected override void Start() {
-
-            base.Start();
         }
         
         protected override void FixedUpdate() {
