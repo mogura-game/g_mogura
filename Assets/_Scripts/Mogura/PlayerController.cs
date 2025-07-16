@@ -34,8 +34,8 @@ namespace App.Game.Entities.Mogura {
         
         protected override void FixedUpdate() {
             // Evita aplicar fuerza si no hay input
-            if (this.inputDirection.sqrMagnitude >= 0.01f) {
-                this.rb.AddForce(50 * this.speed * this.inputDirection.x * Vector2.right, ForceMode2D.Force);
+            if (this.movementUnlocked && this.inputDirection.sqrMagnitude >= 0.01f) {
+                this.rb.AddForce(100 * this.speed * this.inputDirection.x * Vector2.right, ForceMode2D.Force);
             }
 
             base.FixedUpdate();
@@ -49,8 +49,10 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnMove(InputAction.CallbackContext context) {
-            this.inputDirection = context.ReadValue<Vector2>();
-            if (DEBUG && (context.performed || context.canceled)) Debug.Log($"[PI] Move input: {this.inputDirection}");
+            if (context.performed || context.canceled) {
+                if (DEBUG) Debug.Log($"[PI] Move input: {this.inputDirection}");
+                this.inputDirection = context.ReadValue<Vector2>();
+            }
         }
         
         /// <summary>
@@ -58,9 +60,13 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnToggleDig(InputAction.CallbackContext context) {
-            if (DEBUG && (context.performed || context.canceled)) Debug.Log("[PI] : Dig mode started");
-
-            this.stateMachine.ChangeState(EntityStates.dig);
+            if (!this.actionsUnlocked) return;
+            else {
+                if (context.started) {
+                     if (DEBUG) Debug.Log("[PI] : Dig mode started");
+                    this.stateMachine.ChangeState(EntityState.dig_in);
+                }
+            }
         }
 
         /// <summary>
