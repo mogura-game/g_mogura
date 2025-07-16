@@ -105,7 +105,7 @@ namespace App.Game.Entities {
 
     // ? EVENT METHODS==============================================================================================================================
         /// <summary>
-        /// Function called from States to ask for dynamic animation changes to BaseController.
+        /// Function called from StateMachine to ask for dynamic animation clip per State.
         /// Inherit to handle custom naming logic and sending concatenated strings.
         /// </summary>
         public abstract void UpdateStateAnimation(EntityState id);

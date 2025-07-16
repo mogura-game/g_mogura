@@ -15,13 +15,13 @@ namespace App.Game.Entities {
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
         [Header("References")]
-        [Tooltip("Default State for this StateMachine to execute.")]
-        [SerializeField] protected EntityState initialState;
         [Tooltip("Reference to the Controller script this machine is assigned to.")]
         [SerializeField] public BaseController baseController;
 
         // * ATTRIBUTES
         [Header("Attributes")]
+        [Tooltip("Default State for this StateMachine to execute.")]
+        [SerializeField] protected EntityState initialState;
         [Tooltip("Displays currently executing State.")]
         [SerializeField] public BaseState currentState;
 
@@ -65,17 +65,8 @@ namespace App.Game.Entities {
             this.baseController?.UpdateStateAnimation(this.currentState.id);
         }
 
-        public void EnableMovementLock() => this.baseController.movementUnlocked = true;
-        
-        
-        public void EnableActionsLock() => this.baseController.actionsUnlocked = true;
-        
-
-        public void DisableMovementLock() => this.baseController.movementUnlocked = false;
-        
-        
-        public void DisableActionsLock() => this.baseController.actionsUnlocked = false;
-        
+        public void SetMovementLock(bool unlocked) => this.baseController.movementUnlocked = unlocked;
+        public void SetActionsLock(bool unlocked) => this.baseController.actionsUnlocked = unlocked;
     }
 
     /// <summary>
