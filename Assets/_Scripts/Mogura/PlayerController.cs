@@ -7,10 +7,8 @@ namespace App.Game.Entities.Mogura {
     /// Player-specific implementation of the EntityCon oller.
     /// Handles player-specific state logic and behaviours.
     /// </summary>
-    [RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Collider2D))]
-    [RequireComponent(typeof(PlayerInput))]
-    //[RequireComponent(typeof(PlayerAnimator), typeof(Animator))]
-    //[RequireComponent(typeof(PlayerSounder), typeof(AudioSource))]
+    [RequireComponent(typeof(PlayerInput), typeof(PlayerAnimator))]
+    //[RequireComponent(typeof(PlayerSounder))]
     public class PlayerController : BaseController {
     // ? DEBUG======================================================================================================================================
 
