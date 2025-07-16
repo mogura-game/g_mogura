@@ -31,7 +31,7 @@ namespace App.Game.Entities {
 
     // ? CUSTOM METHODS=============================================================================================================================
         public virtual void PlayAnimation(string stateId) {
-            this.ani.Play(stateId, 0);
+            this.ani?.Play(stateId, 0);
         }
 
     // ? EVENT METHODS==============================================================================================================================
