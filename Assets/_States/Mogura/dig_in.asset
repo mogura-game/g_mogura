@@ -16,4 +16,5 @@ MonoBehaviour:
   id: 2
   stopThreshold: 0.25
   fallThreshold: 0.1
+  digTime: 0.25
   timeOnState: 0.2799999

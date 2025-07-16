@@ -13,6 +13,8 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attributes")]
+        [Tooltip("Time to change Player Dig-In State.")]
+        [SerializeField] private float digTime = 0.1f;
         
         // * INTERNAL
         private PlayerController PC => this.stateMachine.baseController as PlayerController;
@@ -21,10 +23,10 @@ namespace App.Game.Entities.Mogura {
 
     // ? BASE METHODS===============================================================================================================================
         public override void OnExecute () {
-            if (this.timeOnState > 5.0f) this.SM.ChangeState(EntityStates.idle);
-            this.timeOnState += Time.fixedDeltaTime;
-
             base.OnExecute();
+
+            if (this.timeOnState > this.digTime) this.SM.ChangeState(EntityState.idle);
+            this.timeOnState += Time.fixedDeltaTime;
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
