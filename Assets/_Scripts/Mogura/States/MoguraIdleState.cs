@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Mogura IdleState class for managing custom State transitions.
+    /// Mogura idle State class for managing custom State transitions.
     /// </summary>
     [CreateAssetMenu(menuName = "States/Mogura/Idle", fileName = "MoguraIdleState")]
     public class MoguraIdleState : PlayerState {
@@ -22,7 +22,7 @@ namespace App.Game.Entities.Mogura {
 
             this.MoveFromInput();
 
-            if (this.PlayerVelocity.Abs().x >= this.stopThreshold) this.SM?.ChangeState(EntityState.move); 
+            if (Mathf.Abs(this.PlayerVelocity.x) >= this.stopThreshold) this.SM?.ChangeState(EntityState.move);
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
@@ -35,6 +35,6 @@ namespace App.Game.Entities.Mogura {
         }
         
     // ? EVENT METHODS==============================================================================================================================
-    
+
     }
 }
