@@ -64,6 +64,18 @@ namespace App.Game.Entities {
         public void RequestStateAnimation() {
             this.baseController?.UpdateStateAnimation(this.currentState.id);
         }
+
+        public void EnableMovementLock() => this.baseController.movementUnlocked = true;
+        
+        
+        public void EnableActionsLock() => this.baseController.actionsUnlocked = true;
+        
+
+        public void DisableMovementLock() => this.baseController.movementUnlocked = false;
+        
+        
+        public void DisableActionsLock() => this.baseController.actionsUnlocked = false;
+        
     }
 
     /// <summary>

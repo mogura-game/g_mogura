@@ -29,6 +29,8 @@ namespace App.Game.Entities {
         [SerializeField] private BaseState[] entityStates;
         [Tooltip("Player Rigidbody linear velocity property shorthand acting as a Getter function.")]
         public Vector2 Velocity => this.rb.linearVelocity;
+        [Tooltip("Defines whether the Player is facing right or not.")]
+        public bool facingRight = true;
 
         // * INTERNAL
         protected BaseStateMachine stateMachine;
@@ -48,9 +50,14 @@ namespace App.Game.Entities {
             else Debug.LogError("[EC] No StateMachine assigned!");
         }
 
-        //protected virtual void Update() { }
+        protected virtual void Update() {
+            this.transform.localScale = new Vector3(this.facingRight ? 1 : -1, this.transform.localScale.y, this.transform.localScale.z);
+        }
 
         protected virtual void FixedUpdate() {
+            if (this.Velocity.x < 0.0f) this.facingRight = false;
+            else if (this.Velocity.x > 0.0f) this.facingRight = true;
+
             this.stateMachine?.Execute();
         }
 
