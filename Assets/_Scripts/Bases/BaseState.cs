@@ -1,11 +1,11 @@
 using UnityEngine;
 
 namespace App.Game.Entities {
-    public abstract class BaseState : ScriptableObject, IState {
     /// <summary>
     /// Base class for implementing States using ScriptableObject.
     /// Inherit from this class to define specific transition and behaviours per State.
     /// </summary>
+    public abstract class BaseState : ScriptableObject, IState {
     // ? DEBUG======================================================================================================================================
         [SerializeField] protected bool DEBUG = false;
 
