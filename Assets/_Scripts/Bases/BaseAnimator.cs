@@ -16,7 +16,7 @@ namespace App.Game.Entities {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Reference to the Animator component attached to this Entity.")]
-        [SerializeField] public Animator ani;
+        [SerializeField] protected Animator ani;
 
         // * INTERNAL
 
