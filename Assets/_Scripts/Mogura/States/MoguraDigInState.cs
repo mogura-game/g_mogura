@@ -14,7 +14,7 @@ namespace App.Game.Entities.Mogura {
         // * ATTRIBUTES
         [Header("Attributes")]
         [Tooltip("Time to change Player Dig-In State.")]
-        [SerializeField] private float digTime = 0.1f;
+        [SerializeField] private float digDuration = 0.25f;
         
         // * INTERNAL
         private PlayerController PC => this.stateMachine.baseController as PlayerController;
@@ -25,7 +25,7 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            if (this.timeOnState > this.digTime) this.SM.ChangeState(EntityState.idle);
+            if (this.timeOnState > this.digDuration) this.SM?.ChangeState(EntityState.idle);
             this.timeOnState += Time.fixedDeltaTime;
         }
 
@@ -35,10 +35,10 @@ namespace App.Game.Entities.Mogura {
         public override void OnEnter(BaseStateMachine stateMachine) {
             base.OnEnter(stateMachine);
             
-            this.SM.DisableActionsLock();
-            this.SM.DisableMovementLock();
             this.timeOnState = 0.0f;
-            this.PC?.ResetPhyisics();
+            this.SM?.SetActionsLock(false);
+            this.SM?.SetMovementLock(false);
+            this.PC?.ResetPhysics();
         }
 
         public override void OnExit() {

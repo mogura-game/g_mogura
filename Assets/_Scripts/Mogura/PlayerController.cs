@@ -44,6 +44,10 @@ namespace App.Game.Entities.Mogura {
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
+        public override void UpdateStateAnimation(EntityState id) {
+            this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
+        }
+        
         /// <summary>
         /// Custom Move implementation for Player entity.
         /// Must match On<MethodName> to be called by PlayerInput events.
@@ -72,12 +76,8 @@ namespace App.Game.Entities.Mogura {
         /// <summary>
         /// Returns velocities, forces and rotations to 0.
         /// </summary>
-        public void ResetPhyisics() {
+        public void ResetPhysics() {
             this.rb.linearVelocity = Vector2.zero;
-        }
-        
-        public override void UpdateStateAnimation(EntityState id) {
-            this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
         }
     }
 }
