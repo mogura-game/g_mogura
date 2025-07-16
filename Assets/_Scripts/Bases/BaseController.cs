@@ -18,10 +18,8 @@ namespace App.Game.Entities {
         [Header("References")]
         [Tooltip("Reference to the Rigidbody2D attached to the Player.")]
         protected Rigidbody2D rb;
-        [Tooltip("Reference to the StateMachine script controlling this Entity.")]
-        [SerializeField] protected BaseStateMachine stateMachine;
         [Tooltip("Reference to the Animator script attached to this Entity.")]
-        [SerializeField] public BaseAnimator baseAnimator;
+        [SerializeField] protected BaseAnimator baseAnimator;
 
         // * ATTRIBUTES
         [Header("Attributes")]
@@ -31,6 +29,7 @@ namespace App.Game.Entities {
         public Vector2 Velocity => this.rb.linearVelocity;
 
         // * INTERNAL
+        [SerializeField] protected BaseStateMachine stateMachine;
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {}
