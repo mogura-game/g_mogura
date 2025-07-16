@@ -33,6 +33,7 @@ namespace App.Game.Entities.Mogura {
             
             this.SM?.SetActionsLock(true);
             this.SM?.SetMovementLock(true);
+            this.SM?.SetStateGravity(this.baseGravity);
         }
     }
 }

@@ -38,6 +38,7 @@ namespace App.Game.Entities.Mogura {
             this.timeOnState = 0.0f;
             this.SM?.SetActionsLock(false);
             this.SM?.SetMovementLock(false);
+            this.SM?.SetStateGravity(this.baseGravity);
             this.PC?.ResetPhysics();
         }
 
