@@ -45,9 +45,6 @@ namespace App.Game.Entities {
 
         protected virtual void Start() {
             this.stateMachine?.Initialize();
-
-            if (this.stateMachine is null) if (DEBUG) Debug.Log("[EC] Entity SM initialized");
-            else Debug.LogError("[EC] No StateMachine assigned!");
         }
 
         protected virtual void Update() {
