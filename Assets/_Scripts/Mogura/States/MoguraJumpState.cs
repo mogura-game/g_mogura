@@ -29,7 +29,12 @@ namespace App.Game.Entities.Mogura {
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
-        
+        /// <summary>
+        /// Sends the added Vector2 of current velocity and jump force to this Entity Controller.
+        /// </summary>
+        /// <param name="force">Jump force value.</param>
+        public void JumpFromInput(float force) => this.SM?.JumpDirection(5.666f * force * Vector2.up); 
+
     // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
             base.OnEnter(stateMachine);
@@ -38,7 +43,7 @@ namespace App.Game.Entities.Mogura {
             this.SM?.SetMovementLock(false);
             this.SM?.SetStateGravity(this.baseGravity);
             
-            this.SM?.JumpFromInput(this.jumpForce);
+            this.JumpFromInput(this.jumpForce);
         }
     }
 }
