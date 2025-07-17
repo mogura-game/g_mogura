@@ -17,12 +17,12 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attibutes")]
-        [Tooltip("Stored Input direction get property.")]
+        [Tooltip("Property access to get Player Inputs.")]
         public Vector2 InputDirection => this.inputDirection;
-        [Tooltip("Determines the current Player speed value. (Ranging from 0 to 1)")]
-        [SerializeField, Range(0, 1)] private float speed = 1.0f;
         [Tooltip("Required time from holding Input to enter jump State.")]
         [SerializeField] private float jumpHoldTime = 0.5f;
+        [Tooltip("Property to get if currently detecting any ground.")]
+        [SerializeField] private bool Grounded => this.Grounded;
 
         // * INTERNAL
         private Vector2 inputDirection;
@@ -43,8 +43,6 @@ namespace App.Game.Entities.Mogura {
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
-        public override void SetMoveVelocity(Vector2 movement) => this.rb.linearVelocity = movement * this.speed;
-
         public override void UpdateStateAnimation(EntityState id) {
             this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
         }
