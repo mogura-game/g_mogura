@@ -29,6 +29,8 @@ namespace App.Game.Entities {
         [SerializeField] private BaseState[] entityStates;
         [Tooltip("Player Rigidbody get linear velocity property shorthand.")]
         public Vector2 GetCurrentLinearVelocity => this.rb.linearVelocity;
+        [Tooltip("Determines the current Entity speed value. (Ranging from 0 to 1)")]
+        [SerializeField, Range(0, 1)] private float speed = 1.0f;
         [Tooltip("Defines whether the Player is facing right or not.")]
         public bool facingRight = true;
 
@@ -89,11 +91,7 @@ namespace App.Game.Entities {
         /// Inherit to handle custom naming logic and sending concatenated strings.
         /// </summary>
         public abstract void UpdateStateAnimation(EntityState id);
-        /// <summary>
-        /// Method called from StateMachine to handle custom gravity changes per State.
-        /// </summary>
-        public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
-    
+        
         /// <summary>
         /// Returns a Dictionary using EntityStates as Key with its respective BaseState value from entityStates array.
         /// Called fron BaseStateMachine to receive the actual and validated State list ready to use.
@@ -114,8 +112,13 @@ namespace App.Game.Entities {
             return dictionary;
         }
         
-        public virtual void SetMoveVelocity(Vector2 movement) => this.rb.linearVelocity = movement;
+        /// <summary>
+        /// Method called from StateMachine to handle custom gravity changes per State.
+        /// </summary>
+        public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
+    
+        public virtual void SetVelocity(Vector2 movement) => this.rb.linearVelocity = movement;
         
-        public virtual void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement, ForceMode2D.Force);
+        public virtual void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement * this.speed, ForceMode2D.Force);
     }
 }

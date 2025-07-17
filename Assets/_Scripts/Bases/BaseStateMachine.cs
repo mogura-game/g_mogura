@@ -82,7 +82,7 @@ namespace App.Game.Entities {
         /// </summary>
         public void ResetPhysics() {
             //this.baseController?.ResetRotation();
-            this.baseController?.SetMoveVelocity(Vector2.zero);
+            this.baseController?.SetVelocity(Vector2.zero);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace App.Game.Entities {
         /// Sends the added Vector2 of current velocity and jump force to this Entity Controller.
         /// </summary>
         /// <param name="force">Jump force value.</param>
-        public void JumpFromInput(float force) => this.baseController?.SetMoveVelocity((8 * force * Vector2.up) + this.GetEntityVelocity);
+        public virtual void JumpDirection(Vector2 force) => this.baseController?.SetVelocity(force + this.GetEntityVelocity);
 
         /// <summary>
         /// Sends the State movement lock value to this Entity Controller.
