@@ -2,32 +2,43 @@ using UnityEngine;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Base class for implementing a default Player States from BaseState.
-    /// This enables use IMoveFromInput and send Inputs-based movements.
+    /// Mogura fall State class for managing custom State transitions.
     /// </summary>
-    public abstract class PlayerState : BaseState, IMoveFromInput {
+    [CreateAssetMenu(menuName = "States/Mogura/Fall", fileName = "MoguraFallState")]
+    public class FallState : PlayerState {
     // ? DEBUG======================================================================================================================================
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
 
         // * ATTRIBUTES
-        [Header("Attributes")]
-        [Tooltip("Property to get Player Entity current linear velocity.")]
-        public Vector2 PlayerVelocity => this.SM?.GetEntityVelocity ?? Vector2.zero;
-        [Tooltip("Property to get Player Input direction")]
-        public Vector2 PlayerDirection => this.SM?.InputDirection ?? Vector2.zero;
         
         // * INTERNAL
-        protected PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
 
     // ? BASE METHODS===============================================================================================================================
+        public override void OnExecute () {
+            base.OnExecute();
+
+            this.MoveFromInput();
+
+            if (this.baseGravity < 2.0f) {
+                this.baseGravity += Time.fixedDeltaTime;
+                this.SM?.SetStateGravity(this.baseGravity);
+            } else this.baseGravity = 2.0f;
+
+            // TODO: Add floor detection
+            if (this.PlayerVelocity.y >= 0.0f) this.SM?.ChangeState(EntityState.idle); 
+        }
 
     // ? CUSTOM METHODS=============================================================================================================================
         
     // ? EVENT METHODS==============================================================================================================================
-        public virtual void MoveFromInput() {
-            if (!this.SM.MovementLocked && this.PlayerDirection.sqrMagnitude >= 0.01f) this.SM?.MoveDirection(16 * this.PlayerDirection.x * Vector2.right);
+        public override void OnEnter(BaseStateMachine stateMachine) {
+            base.OnEnter(stateMachine);
+            
+            this.SM?.SetActionsLock(true);
+            this.SM?.SetMovementLock(false);
+            this.baseGravity = 1.0f;
         }
     }
 }

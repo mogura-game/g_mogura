@@ -25,7 +25,7 @@ namespace App.Game.Entities.Mogura {
             this.MoveFromInput();
 
             // TODO: Add float/fall State
-            //if (this.PC?.Velocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
+            if (this.PlayerVelocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
         }
 
     // ? CUSTOM METHODS=============================================================================================================================

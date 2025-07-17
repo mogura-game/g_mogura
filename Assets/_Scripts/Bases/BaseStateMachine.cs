@@ -95,7 +95,7 @@ namespace App.Game.Entities {
         /// Sends the added Vector2 of current velocity and jump force to this Entity Controller.
         /// </summary>
         /// <param name="force">Jump force value.</param>
-        public void JumpFromInput(float force) => this.baseController?.SetMoveVelocity((50 * force * Vector2.up) + this.GetEntityVelocity);
+        public void JumpFromInput(float force) => this.baseController?.SetMoveVelocity((8 * force * Vector2.up) + this.GetEntityVelocity);
 
         /// <summary>
         /// Sends the State movement lock value to this Entity Controller.
@@ -125,6 +125,7 @@ namespace App.Game.Entities {
         idle,
         move,
         jump,
+        fall,
         dig_in,
     }
 }
