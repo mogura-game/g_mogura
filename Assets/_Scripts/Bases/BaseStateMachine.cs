@@ -88,7 +88,14 @@ namespace App.Game.Entities {
         /// <summary>
         /// Sends direction of movement force to this Entity Controller.
         /// </summary>
+        /// <param name="direction">Movement force value.</param>
         public void MoveDirection(Vector2 direction) => this.baseController?.SetMoveForce(direction);
+
+        /// <summary>
+        /// Sends the added Vector2 of current velocity and jump force to this Entity Controller.
+        /// </summary>
+        /// <param name="force">Jump force value.</param>
+        public void JumpFromInput(float force) => this.baseController?.SetMoveVelocity((50 * force * Vector2.up) + this.GetEntityVelocity);
 
         /// <summary>
         /// Sends the State movement lock value to this Entity Controller.
@@ -117,6 +124,7 @@ namespace App.Game.Entities {
     public enum EntityState {
         idle,
         move,
+        jump,
         dig_in,
     }
 }

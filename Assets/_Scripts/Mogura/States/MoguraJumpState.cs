@@ -1,0 +1,44 @@
+using UnityEngine;
+
+namespace App.Game.Entities.Mogura {
+    /// <summary>
+    /// Mogura jump State class for managing custom State transitions.
+    /// </summary>
+    [CreateAssetMenu(menuName = "States/Mogura/Jump", fileName = "MoguraJumpState")]
+    public class MoguraJumpState : PlayerState {
+    // ? DEBUG======================================================================================================================================
+
+    // ? PARAMETERS=================================================================================================================================
+        // * REFERENCES
+
+        // * ATTRIBUTES
+        [Header("Attributes")]
+        [Tooltip("Defines Player size jump force scale. (1 means 1 Mogura height)")]
+        [SerializeField, Min(0)] private float jumpForce = 1.0f;
+        
+        // * INTERNAL
+
+    // ? BASE METHODS===============================================================================================================================
+        public override void OnExecute () {
+            base.OnExecute();
+
+            this.MoveFromInput();
+
+            // TODO: Add float/fall State
+            //if (this.PC?.Velocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
+        }
+
+    // ? CUSTOM METHODS=============================================================================================================================
+        
+    // ? EVENT METHODS==============================================================================================================================
+        public override void OnEnter(BaseStateMachine stateMachine) {
+            base.OnEnter(stateMachine);
+            
+            this.SM?.SetActionsLock(true);
+            this.SM?.SetMovementLock(false);
+            this.SM?.SetStateGravity(this.baseGravity);
+            
+            this.SM?.JumpFromInput(this.jumpForce);
+        }
+    }
+}

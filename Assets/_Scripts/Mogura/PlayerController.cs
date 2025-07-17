@@ -17,10 +17,12 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attibutes")]
+        [Tooltip("Stored Input direction get property.")]
+        public Vector2 InputDirection => this.inputDirection;
         [Tooltip("Determines the current Player speed value. (Ranging from 0 to 1)")]
         [SerializeField, Range(0, 1)] private float speed = 1.0f;
-        [Tooltip(".")]
-        public Vector2 InputDirection => this.inputDirection;
+        [Tooltip("Required time from holding Input to enter jump State.")]
+        [SerializeField] private float jumpHoldTime = 0.5f;
 
         // * INTERNAL
         private Vector2 inputDirection;
@@ -48,13 +50,25 @@ namespace App.Game.Entities.Mogura {
         }
         
         /// <summary>
-        /// Custom Move implementation for Player entity.
+        /// Custom move implementation for Player entity.
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnMove(InputAction.CallbackContext context) {
             if (context.performed || context.canceled) {
                 if (DEBUG) Debug.Log($"[PI] Move input: {this.inputDirection}");
                 this.inputDirection = context.ReadValue<Vector2>();
+            }
+        }
+        
+        /// <summary>
+        /// Custom jump implementation for Player entity.
+        /// Must match On<MethodName> to be called by PlayerInput events.
+        /// </summary>
+        public void OnJump(InputAction.CallbackContext context) {
+            if (this.actionsLocked) return;
+            else if (context.performed && context.duration >= this.jumpHoldTime) {
+                if (DEBUG) Debug.Log("[PI] : Jump started");
+                this.stateMachine.ChangeState(EntityState.jump);
             }
         }
         

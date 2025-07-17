@@ -789,7 +789,19 @@ MonoBehaviour:
     m_ActionId: 27c5f898-bc57-4ee1-8800-db469aca5fe3
     m_ActionName: 'Player/Crouch[/Keyboard/c]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 652483343}
+        m_TargetAssemblyTypeName: App.Game.Entities.Mogura.PlayerController, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: f1ba0d36-48eb-4cd5-b651-1c94a6531f70
     m_ActionName: 'Player/Jump[/Keyboard/space]'
   - m_PersistentCalls:
@@ -867,11 +879,13 @@ MonoBehaviour:
   entityStates:
   - {fileID: 11400000, guid: 52e3b9add2ecfe54c8c5dc31f1078749, type: 2}
   - {fileID: 11400000, guid: 259e21c65675f174ca361b6c33a7c2cc, type: 2}
+  - {fileID: 11400000, guid: e988303bb24b3524a96207141b789b0e, type: 2}
   - {fileID: 11400000, guid: 30e3a8b02f2c367438a5c505dc97ae0d, type: 2}
   facingRight: 1
-  actionsUnlocked: 1
-  movementUnlocked: 1
+  actionsLocked: 0
+  movementLocked: 0
   speed: 1
+  jumpHoldTime: 0.5
 --- !u!114 &652483344
 MonoBehaviour:
   m_ObjectHideFlags: 0
