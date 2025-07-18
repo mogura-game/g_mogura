@@ -23,6 +23,7 @@ namespace App.Game.Entities.Mogura {
             this.MoveFromInput();
 
             if (Mathf.Abs(this.PlayerVelocity.x) < this.stopThreshold) this.SM?.ChangeState(EntityState.idle);
+            else if (!this.SM.PlayerGrounded && this.PlayerVelocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall);
         }
 
     // ? CUSTOM METHODS=============================================================================================================================

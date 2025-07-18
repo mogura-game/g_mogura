@@ -12,6 +12,7 @@ namespace App.Game.Entities.Mogura {
         
         // * ATTRIBUTES
         public Vector2 InputDirection => this.PC?.InputDirection ?? Vector2.zero;
+        public bool PlayerGrounded => this.PC?.IsGrounded ?? false;
 
         // * INTERNAL
         PlayerController PC => this.baseController as PlayerController;

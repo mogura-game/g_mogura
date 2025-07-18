@@ -26,8 +26,7 @@ namespace App.Game.Entities.Mogura {
                 this.SM?.SetStateGravity(this.baseGravity);
             } else this.baseGravity = 2.0f;
 
-            // TODO: Add floor detection
-            if (this.PlayerVelocity.y >= 0.0f) this.SM?.ChangeState(EntityState.idle); 
+            if (this.SM.PlayerGrounded && this.PlayerVelocity.y >= 0.0f) this.SM?.ChangeState(EntityState.idle); 
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
