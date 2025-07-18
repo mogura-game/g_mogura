@@ -12,6 +12,8 @@ namespace App.Game.Entities.Mogura {
         // * REFERENCES
 
         // * ATTRIBUTES
+        [Tooltip("Maximum fall State gravity value.")]
+        [SerializeField, Range(0.0f, 5.0f)] private float maxGravity = 3.0f;
         
         // * INTERNAL
 
@@ -21,10 +23,11 @@ namespace App.Game.Entities.Mogura {
 
             this.MoveFromInput();
 
-            if (this.baseGravity < 2.0f) {
-                this.baseGravity += Time.fixedDeltaTime;
-                this.SM?.SetStateGravity(this.baseGravity);
-            } else this.baseGravity = 2.0f;
+            if (this.baseGravity < this.maxGravity) {
+                this.baseGravity += Time.fixedDeltaTime * 2;
+            } else this.baseGravity = this.maxGravity;
+
+            this.SM?.SetStateGravity(this.baseGravity);
 
             if (this.SM.PlayerGrounded && this.PlayerVelocity.y >= 0.0f) this.SM?.ChangeState(EntityState.idle); 
         }
@@ -37,7 +40,6 @@ namespace App.Game.Entities.Mogura {
             
             this.SM?.SetActionsLock(true);
             this.SM?.SetMovementLock(false);
-            this.baseGravity = 1.0f;
         }
     }
 }
