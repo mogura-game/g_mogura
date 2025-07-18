@@ -29,14 +29,16 @@ namespace App.Game.Entities {
 
         // * ATTRIBUTES
         [Header("Attributes")]
+        [Tooltip("List of all available States this Entity can execute.")]
+        [SerializeField] private BaseState[] entityStates;
+        [Tooltip(".")]
+        [SerializeField] private Vector2 maxVelocity = Vector2.one;
         [Tooltip("Determines the current Entity speed value. (Ranging from 0 to 1)")]
         [SerializeField, Range(0, 1)] protected float speed = 1.0f;
         [Tooltip("Defines whether the Player is facing right or not.")]
         [SerializeField] protected bool facingRight = true;
 
         // * INTERNAL
-        [Tooltip("List of all available States this Entity can execute.")]
-        [SerializeField] private BaseState[] entityStates;
         [HideInInspector] public bool actionsLocked = false;
         [HideInInspector] public bool movementLocked = false;
 
@@ -51,12 +53,20 @@ namespace App.Game.Entities {
         }
 
         protected virtual void Update() {
+            if (this.GetCurrentLinearVelocity.x < -0.1f) this.facingRight = false;
+            else if (this.GetCurrentLinearVelocity.x > 0.1f) this.facingRight = true;
+
             this.transform.localScale = new Vector3(this.facingRight ? 1 : -1, this.transform.localScale.y, this.transform.localScale.z);
         }
 
         protected virtual void FixedUpdate() {
-            if (this.GetCurrentLinearVelocity.x < 0.0f) this.facingRight = false;
-            else if (this.GetCurrentLinearVelocity.x > 0.0f) this.facingRight = true;
+            Vector2 velocity = this.GetCurrentLinearVelocity;
+
+            // Clampeamos directamente el vector completo
+            velocity.x = Mathf.Clamp(velocity.x, -this.maxVelocity.x, this.maxVelocity.x);
+            velocity.y = Mathf.Clamp(velocity.y, -this.maxVelocity.y, this.maxVelocity.y);
+
+            this.rb.linearVelocity = velocity;
 
             this.stateMachine?.Execute();
         }
