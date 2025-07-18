@@ -22,22 +22,23 @@ namespace App.Game.Entities {
         [SerializeField] protected Rigidbody2D rb;
         [Tooltip("Reference to the Animator script attached to this Entity.")]
         [SerializeField] protected BaseAnimator baseAnimator;
+        [Tooltip("Property Player Rigidbody2D get linear velocity.")]
+        public Vector2 GetCurrentLinearVelocity => this.rb.linearVelocity;
+        [Tooltip("Reference to the StateMachine script created for this Entity.")]
+        protected BaseStateMachine stateMachine;
 
         // * ATTRIBUTES
         [Header("Attributes")]
-        [Tooltip("List of all available States this Entity can execute.")]
-        [SerializeField] private BaseState[] entityStates;
-        [Tooltip("Player Rigidbody get linear velocity property shorthand.")]
-        public Vector2 GetCurrentLinearVelocity => this.rb.linearVelocity;
         [Tooltip("Determines the current Entity speed value. (Ranging from 0 to 1)")]
-        [SerializeField, Range(0, 1)] private float speed = 1.0f;
+        [SerializeField, Range(0, 1)] protected float speed = 1.0f;
         [Tooltip("Defines whether the Player is facing right or not.")]
-        public bool facingRight = true;
+        [SerializeField] protected bool facingRight = true;
 
         // * INTERNAL
-        protected BaseStateMachine stateMachine;
-        public bool actionsLocked = false;
-        public bool movementLocked = false;
+        [Tooltip("List of all available States this Entity can execute.")]
+        [SerializeField] private BaseState[] entityStates;
+        [HideInInspector] public bool actionsLocked = false;
+        [HideInInspector] public bool movementLocked = false;
 
     // ? BASE METHODS===============================================================================================================================
         protected virtual void Awake() {
