@@ -876,17 +876,22 @@ MonoBehaviour:
   DEBUG: 0
   rb: {fileID: 652483336}
   baseAnimator: {fileID: 652483344}
+  speed: 1
+  facingRight: 1
   entityStates:
   - {fileID: 11400000, guid: 52e3b9add2ecfe54c8c5dc31f1078749, type: 2}
   - {fileID: 11400000, guid: 259e21c65675f174ca361b6c33a7c2cc, type: 2}
   - {fileID: 11400000, guid: e988303bb24b3524a96207141b789b0e, type: 2}
   - {fileID: 11400000, guid: ea15952e799582e46b3686167ae3e6ca, type: 2}
   - {fileID: 11400000, guid: 30e3a8b02f2c367438a5c505dc97ae0d, type: 2}
-  facingRight: 1
   actionsLocked: 0
   movementLocked: 0
-  speed: 1
   jumpHoldTime: 0.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  raySeparation: 0.45
+  rayDistance: 0.1
 --- !u!114 &652483344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +980,7 @@ GameObject:
   - component: {fileID: 940309241}
   - component: {fileID: 940309240}
   - component: {fileID: 940309239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground_01
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -1151,7 +1156,7 @@ GameObject:
   - component: {fileID: 1612298509}
   - component: {fileID: 1612298508}
   - component: {fileID: 1612298507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Environment
   m_Icon: {fileID: 0}
