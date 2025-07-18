@@ -46,7 +46,7 @@ namespace App.Game.Entities.Mogura {
         protected override void FixedUpdate() {
             base.FixedUpdate();
 
-            this.DetectGrounded();
+            this.isGrounded = this.DetectGrounded();
         }
 
         private void OnDrawGizmos() {
