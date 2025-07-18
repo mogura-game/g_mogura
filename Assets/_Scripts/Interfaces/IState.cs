@@ -1,6 +1,6 @@
 namespace App.Game.Entities {
     /// <summary>
-    /// Interface for defining State transitions and behaviours.
+    /// Interface for defining Entity State transitions and behaviours.
     /// </summary>
     public interface IState {
     // ? DEBUG======================================================================================================================================
@@ -23,6 +23,7 @@ namespace App.Game.Entities {
         /// Method executed right on entering the State.
         /// </summary>
         void OnEnter(BaseStateMachine stateMachine);
+        
         /// <summary>
         /// Method executed just before exiting the State.
         /// </summary>

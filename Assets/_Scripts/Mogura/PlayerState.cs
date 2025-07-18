@@ -5,7 +5,7 @@ namespace App.Game.Entities.Mogura {
     /// Base class for implementing a default Player States from BaseState.
     /// This enables use IMoveFromInput and send Inputs-based movements.
     /// </summary>
-    public abstract class PlayerState : BaseState, IMoveFromInput {
+    public abstract class PlayerState : BaseState, IPlayerMovableState {
     // ? DEBUG======================================================================================================================================
 
     // ? PARAMETERS=================================================================================================================================
