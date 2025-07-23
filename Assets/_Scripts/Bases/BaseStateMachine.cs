@@ -129,5 +129,6 @@ namespace App.Game.Entities {
         jump,
         fall,
         dig_in,
+        dig,
     }
 }
