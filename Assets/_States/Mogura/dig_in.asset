@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: dig_in
   m_EditorClassIdentifier: 
   DEBUG: 0
-  id: 4
+  id: 5
   baseGravity: 0
   stopThreshold: 0.25
   fallThreshold: 0.1

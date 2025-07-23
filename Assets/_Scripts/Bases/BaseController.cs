@@ -62,7 +62,6 @@ namespace App.Game.Entities {
         protected virtual void FixedUpdate() {
             Vector2 velocity = this.GetCurrentLinearVelocity;
 
-            // Clampeamos directamente el vector completo
             velocity.x = Mathf.Clamp(velocity.x, -this.maxVelocity.x, this.maxVelocity.x);
             velocity.y = Mathf.Clamp(velocity.y, -this.maxVelocity.y, this.maxVelocity.y);
 

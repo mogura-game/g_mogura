@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: fall
   m_EditorClassIdentifier: 
   DEBUG: 0
-  id: 3
+  id: 4
   baseGravity: 1
   stopThreshold: 0.25
   fallThreshold: 0.1
+  maxGravity: 3

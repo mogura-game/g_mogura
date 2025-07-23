@@ -4,7 +4,7 @@ using System;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Player-specific implementation of the EntityCon oller.
+    /// Player-specific implementation of the EntityController.
     /// Handles player-specific state logic and behaviours.
     /// </summary>
     [RequireComponent(typeof(PlayerInput), typeof(PlayerAnimator))]
@@ -33,6 +33,7 @@ namespace App.Game.Entities.Mogura {
         // * INTERNAL
         private Vector2 inputDirection;
         private bool isGrounded = false;
+        private bool isCharging = false;
 
     // ? BASE METHODS===============================================================================================================================
         protected override void Awake() {
@@ -46,7 +47,7 @@ namespace App.Game.Entities.Mogura {
         protected override void FixedUpdate() {
             base.FixedUpdate();
 
-            this.isGrounded = this.DetectGrounded();
+            this.isGrounded = this.DetectGrounded() && this.GetCurrentLinearVelocity.y <= 0.0f;
         }
 
         private void OnDrawGizmos() {
@@ -85,10 +86,20 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnJump(InputAction.CallbackContext context) {
-            if (this.actionsLocked) return;
-            else if (context.performed && context.duration >= this.jumpHoldTime) {
-                if (DEBUG) Debug.Log("[PI] : Jump started");
-                this.stateMachine.ChangeState(EntityState.jump);
+            if (this.actionsLocked && !this.IsGrounded) return;
+            else if (context.started) {
+                if (DEBUG) Debug.Log($"[PI] Charge started");
+                this.isCharging = true;
+                this.stateMachine.ChangeState(EntityState.charge);
+            } else if (context.performed && this.isCharging == true) {
+                if (context.duration >= this.jumpHoldTime) {
+                    if (DEBUG) Debug.Log("[PI] Jump proceeded");
+                    this.stateMachine.ChangeState(EntityState.jump);
+                } else {
+                    if (DEBUG) Debug.Log($"[PI] Idle returned");
+                    this.stateMachine.ChangeState(EntityState.idle);
+                }
+                this.isCharging = false;
             }
         }
         
@@ -98,8 +109,8 @@ namespace App.Game.Entities.Mogura {
         /// </summary>
         public void OnToggleDig(InputAction.CallbackContext context) {
             if (this.actionsLocked) return;
-            else if (context.started) {
-                if (DEBUG) Debug.Log("[PI] : Dig mode started");
+            else if (context.started && this.IsGrounded) {
+                if (DEBUG) Debug.Log("[PI] Dig mode started");
                 this.stateMachine.ChangeState(EntityState.dig_in);
             }
         }
