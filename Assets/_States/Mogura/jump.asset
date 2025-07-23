@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: jump
   m_EditorClassIdentifier: 
   DEBUG: 0
-  id: 2
+  id: 3
   baseGravity: 1
   stopThreshold: 0.25
   fallThreshold: 0.1
-  jumpForce: 1
+  jumpForce: 2
