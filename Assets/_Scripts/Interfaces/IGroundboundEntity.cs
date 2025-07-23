@@ -24,7 +24,7 @@ namespace App.Game.Entities {
         /// <summary>
         /// 
         /// </summary>
-        bool DetectGrounded();
+        bool DetectGround();
         
         /// <summary>
         /// 

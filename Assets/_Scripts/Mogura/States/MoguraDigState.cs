@@ -2,26 +2,31 @@ using UnityEngine;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
-    /// Player-specific implementation for handling custom animations and Animator managging.
+    /// Mogura dig State class for managing custom State transitions.
     /// </summary>
-    [RequireComponent(typeof(PlayerController))]
-    public class PlayerAnimator : BaseAnimator {
+    [CreateAssetMenu(menuName = "States/Mogura/Dig", fileName = "MoguraDigState")]
+    public class DigState : BaseState {
     // ? DEBUG======================================================================================================================================
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
 
         // * ATTRIBUTES
-
+        
         // * INTERNAL
 
     // ? BASE METHODS===============================================================================================================================
 
     // ? CUSTOM METHODS=============================================================================================================================
-
+        
     // ? EVENT METHODS==============================================================================================================================
-        public void UpdateAnimationClipSpeed(float objectSpeed) {
-            this.ani.speed = objectSpeed;
+        public override void OnEnter(BaseStateMachine stateMachine) {
+            base.OnEnter(stateMachine);
+            
+            this.stateMachine?.SetActionsLock(true);
+            this.stateMachine?.SetMovementLock(true);
+            this.stateMachine?.SetStateGravity(this.baseGravity);
+            this.stateMachine?.ResetPhysics();
         }
     }
 }

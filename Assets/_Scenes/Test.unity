@@ -466,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 652483332}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -856,6 +856,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 9caa3d8a-6b2f-4e8e-8bad-6ede561bd9be
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 652483343}
+        m_TargetAssemblyTypeName: App.Game.Entities.Mogura.PlayerController, Assembly-CSharp
+        m_MethodName: OnDig
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8bab528a-ab81-4440-8791-c512568a8d55
+    m_ActionName: 'Player/Interact1[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -883,6 +899,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e988303bb24b3524a96207141b789b0e, type: 2}
   - {fileID: 11400000, guid: ea15952e799582e46b3686167ae3e6ca, type: 2}
   - {fileID: 11400000, guid: 30e3a8b02f2c367438a5c505dc97ae0d, type: 2}
+  - {fileID: 11400000, guid: bce6afe4c83e2da438eeff9d523d93f5, type: 2}
   maxVelocity: {x: 8, y: 8}
   speed: 1
   facingRight: 1
@@ -988,7 +1005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &940309239
 BoxCollider2D:
   m_ObjectHideFlags: 0
