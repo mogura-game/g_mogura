@@ -13,7 +13,7 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attributes")]
-        [Tooltip("Defines Player size jump force scale. (1 means 1 Mogura height)")]
+        [Tooltip("Defines Player size jump force scale. (default 1 Mogura high)")]
         [SerializeField, Min(0)] private float jumpForce = 1.0f;
         
         // * INTERNAL

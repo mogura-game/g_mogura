@@ -13,7 +13,7 @@ namespace App.Game.Entities.Mogura {
 
         // * ATTRIBUTES
         [Header("Attributes")]
-        [Tooltip("Property to get Player Entity current linear velocity.")]
+        [Tooltip("Property to get current Player linear velocity.")]
         public Vector2 PlayerVelocity => this.SM?.GetEntityVelocity ?? Vector2.zero;
         [Tooltip("Property to get Player Input direction")]
         public Vector2 PlayerDirection => this.SM?.InputDirection ?? Vector2.zero;
@@ -22,6 +22,12 @@ namespace App.Game.Entities.Mogura {
         protected PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
 
     // ? BASE METHODS===============================================================================================================================
+        public override void OnExecute () {
+            base.OnExecute();
+
+            this.MoveFromInput();
+        }
+
 
     // ? CUSTOM METHODS=============================================================================================================================
         public virtual void MoveFromInput() {

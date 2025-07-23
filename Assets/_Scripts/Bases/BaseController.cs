@@ -31,7 +31,7 @@ namespace App.Game.Entities {
         [Header("Attributes")]
         [Tooltip("List of all available States this Entity can execute.")]
         [SerializeField] private BaseState[] entityStates;
-        [Tooltip(".")]
+        [Tooltip("Vector which determines Entity max velocity per axis.")]
         [SerializeField] private Vector2 maxVelocity = Vector2.one;
         [Tooltip("Determines the current Entity speed value. (Ranging from 0 to 1)")]
         [SerializeField, Range(0, 1)] protected float speed = 1.0f;
@@ -128,8 +128,16 @@ namespace App.Game.Entities {
         /// </summary>
         public void SetGravityScale(float scale) => this.rb.gravityScale = scale;
     
+        /// <summary>
+        /// Method to set custom velocities directly to this Entity Rigidbody2D.
+        /// </summary>
+        /// <param name="movement">Amount of movement to set.</param>
         public virtual void SetVelocity(Vector2 movement) => this.rb.linearVelocity = movement;
         
+        /// <summary>
+        /// Method to add forces to this Entity Rigidbody2D using ForceMode2D.Force.
+        /// </summary>
+        /// <param name="movement"></param>
         public virtual void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement * this.speed, ForceMode2D.Force);
     }
 }

@@ -21,15 +21,16 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            this.MoveFromInput();
-
             if (this.baseGravity < this.maxGravity) {
                 this.baseGravity += Time.fixedDeltaTime * 2;
             } else this.baseGravity = this.maxGravity;
 
             this.SM?.SetStateGravity(this.baseGravity);
 
-            if (this.SM.PlayerGrounded && this.PlayerVelocity.y >= 0.0f) this.SM?.ChangeState(EntityState.idle); 
+            if (this.SM.PlayerGrounded && this.PlayerVelocity.y >= 0.0f) {
+                if (Mathf.Abs(this.PlayerVelocity.x) > this.stopThreshold) this.SM?.ChangeState(EntityState.move);
+                else this.SM?.ChangeState(EntityState.idle);
+            }
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
