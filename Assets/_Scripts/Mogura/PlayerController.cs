@@ -34,6 +34,8 @@ namespace App.Game.Entities.Mogura {
         private Vector2 inputDirection;
         private bool isGrounded = false;
         private bool isCharging = false;
+        private bool isDigging = false;
+        public PlayerAnimator PA => baseAnimator as PlayerAnimator;
 
     // ? BASE METHODS===============================================================================================================================
         protected override void Awake() {
@@ -47,7 +49,9 @@ namespace App.Game.Entities.Mogura {
         protected override void FixedUpdate() {
             base.FixedUpdate();
 
-            this.isGrounded = this.DetectGrounded() && this.GetCurrentLinearVelocity.y <= 0.0f;
+            this.isGrounded = this.DetectGround() && this.GetCurrentLinearVelocity.y <= 0.0f;
+
+            if (this.isDigging) this.PA?.UpdateAnimationClipSpeed(this.GetCurrentLinearVelocity.magnitude);
         }
 
         private void OnDrawGizmos() {
@@ -66,6 +70,8 @@ namespace App.Game.Entities.Mogura {
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
+        public override void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement * this.speed * (this.isGrounded ? 1.0f : 0.25f), ForceMode2D.Force);
+
         public override void UpdateStateAnimation(EntityState id) {
             this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
         }
@@ -86,7 +92,7 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnJump(InputAction.CallbackContext context) {
-            if (this.actionsLocked && !this.IsGrounded) return;
+            if (this.actionsLocked || !this.IsGrounded || this.isDigging) return;
             else if (context.started) {
                 if (DEBUG) Debug.Log($"[PI] Charge started");
                 this.isCharging = true;
@@ -108,13 +114,34 @@ namespace App.Game.Entities.Mogura {
         /// Must match On<MethodName> to be called by PlayerInput events.
         /// </summary>
         public void OnToggleDig(InputAction.CallbackContext context) {
-            if (this.actionsLocked) return;
-            else if (context.started && this.IsGrounded) {
-                if (DEBUG) Debug.Log("[PI] Dig mode started");
-                this.stateMachine.ChangeState(EntityState.dig_in);
+            if (context.started) {
+                if (!this.isDigging && this.IsGrounded && !this.actionsLocked) {
+                    if (DEBUG) Debug.Log("[PI] Dig mode started");
+                    this.stateMachine.ChangeState(EntityState.dig_in);
+                    this.rb.linearDamping = 5;
+                    this.isDigging = true;
+                } else if (this.isDigging) {
+                    if (DEBUG) Debug.Log("[PI] Dig mode ended");
+                    this.stateMachine.ChangeState(EntityState.idle);
+                    this.rb.linearDamping = 0.0f;
+                    this.isDigging = false;
+                    this.PA?.UpdateAnimationClipSpeed(1.0f);
+                }
             }
         }
 
+        /// <summary>
+        /// Custom dig implementation for Player entity.
+        /// Must match On<MethodName> to be called by PlayerInput events.
+        /// </summary>
+        public void OnDig(InputAction.CallbackContext context) {
+            if (!this.isDigging) return;
+            else if (context.started) {
+                if (DEBUG) Debug.Log($"[PI] DigTriggered");
+                this.rb.AddForce(100 * this.speed * this.transform.right, ForceMode2D.Force);
+            }
+        }
+        
         /// <summary>
         /// Returns Rigidbody2D velocity, forces and rotations to 0.
         /// </summary>
@@ -124,7 +151,7 @@ namespace App.Game.Entities.Mogura {
         }
 
         
-        public bool DetectGrounded() {
+        public bool DetectGround() {
             Vector2 startPosition = (Vector2)this.transform.position + (Vector2.up * (this.rayDistance / 2));
 
             Vector2 leftRay = startPosition + (this.raySeparation / 2 * Vector2.left);

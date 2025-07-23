@@ -24,7 +24,7 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            if (this.timeOnState > this.digDuration) this.SM?.ChangeState(EntityState.idle);
+            if (this.timeOnState > this.digDuration) this.SM?.ChangeState(EntityState.dig);
             this.timeOnState += Time.fixedDeltaTime;
         }
 
