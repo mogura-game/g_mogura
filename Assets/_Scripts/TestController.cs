@@ -26,6 +26,11 @@ namespace App.Game.Entities.Test {
         // ? CUSTOM METHODS=============================================================================================================================
 
         // ? EVENT METHODS==============================================================================================================================
+        public void Move() {
+            if (this.currentState != TestStates.move) this.testMachine.ChangeState(this.testMachine.TestStatesList[(int)TestStates.move]);
+        }
+
+    }
     
     [Serializable]
     public enum TestStates {
