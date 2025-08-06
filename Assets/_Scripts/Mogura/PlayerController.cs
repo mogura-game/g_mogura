@@ -50,6 +50,10 @@ namespace App.Game.Entities.Mogura {
         private bool isBlocking = false;
         private bool isAiming = false;
         public PlayerAnimator PA => baseAnimator as PlayerAnimator;
+        [Range(0.0f, 10.0f)] public float projectileSpeed = 5.0f;
+
+        public GameObject prefab;
+        public GameObject aimReticle;
 
     // ? BASE METHODS===============================================================================================================================
         protected override void Awake() {
