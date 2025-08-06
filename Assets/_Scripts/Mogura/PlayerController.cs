@@ -1,6 +1,7 @@
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using System;
+using UnityEditor;
 
 namespace App.Game.Entities.Mogura {
     /// <summary>
@@ -14,6 +15,8 @@ namespace App.Game.Entities.Mogura {
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
+        [Tooltip("Capsule 2D.")]
+        [SerializeField] public Collider2D attackCollider;
 
         // * ATTRIBUTES
         [Header("Attibutes")]
@@ -157,6 +160,20 @@ namespace App.Game.Entities.Mogura {
             else if (context.started) {
                 if (DEBUG) Debug.Log($"[PI] DigTriggered");
                 this.rb.AddForce(100 * this.speed * this.transform.right, ForceMode2D.Force);
+            }
+        }
+        
+        /// <summary>
+        /// Custom attack implementation for Player entity.
+        /// Must match On<MethodName> to be called by PlayerInput events.
+        /// </summary>
+        public void OnAttack(InputAction.CallbackContext context) {
+            if (this.actionsLocked) return;
+            else if (context.started) {
+                if (DEBUG) Debug.Log($"[PI] Attack perfomed");
+                this.stateMachine.ChangeState(EntityState.attack);
+                if (this.lookDirection.x > 0.0f) this.facingRight = true;
+                else if (this.lookDirection.x < 0.0f) this.facingRight = false;
             }
         }
 
