@@ -26,7 +26,6 @@ namespace App.Game.Entities.Mogura {
             this.stateMachine?.SetActionsLock(true);
             this.stateMachine?.SetMovementLock(true);
             this.stateMachine?.SetStateGravity(this.baseGravity);
-            this.stateMachine?.ResetPhysics();
         }
     }
 }

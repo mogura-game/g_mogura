@@ -115,21 +115,36 @@ namespace App.Game.Entities.Mogura {
         /// </summary>
         public void OnToggleDig(InputAction.CallbackContext context) {
             if (context.started) {
-                if (!this.isDigging && this.IsGrounded && !this.actionsLocked) {
-                    if (DEBUG) Debug.Log("[PI] Dig mode started");
-                    this.stateMachine.ChangeState(EntityState.dig_in);
-                    this.rb.linearDamping = 5;
-                    this.isDigging = true;
-                } else if (this.isDigging) {
-                    if (DEBUG) Debug.Log("[PI] Dig mode ended");
-                    this.stateMachine.ChangeState(EntityState.idle);
-                    this.rb.linearDamping = 0.0f;
-                    this.isDigging = false;
-                    this.PA?.UpdateAnimationClipSpeed(1.0f);
+                if (this.isDigging) {
+                    this.ExitDigMode();
+                } else if (this.IsGrounded && !this.actionsLocked) {
+                    this.EnterDigMode();
                 }
             }
         }
 
+        private void EnterDigMode() {
+            if (DEBUG) Debug.Log("[PI] Dig mode started");
+            this.transform.localScale = Vector3.one;
+            this.stateMachine.ChangeState(EntityState.dig_in);
+            this.rb.linearDamping = 5.0f;
+            this.isDigging = true;
+            this.fullCollider.enabled = !this.isDigging;
+            this.digCollider.enabled = this.isDigging;
+        }
+
+        private void ExitDigMode() {
+            if (DEBUG) Debug.Log("[PI] Dig mode ended");
+            this.transform.localScale = Vector3.one;
+            this.PA?.UpdateAnimationClipSpeed(1.0f);
+            this.stateMachine.ChangeState(EntityState.dig_out);
+            this.rb.linearDamping = 0.0f;
+            this.transform.rotation = Quaternion.Euler(Vector3.zero);
+            this.isDigging = false;
+            this.fullCollider.enabled = !this.isDigging;
+            this.digCollider.enabled = this.isDigging;
+        }
+        
         /// <summary>
         /// Custom dig implementation for Player entity.
         /// Must match On<MethodName> to be called by PlayerInput events.
