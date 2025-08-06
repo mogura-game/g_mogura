@@ -20,7 +20,7 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            if (this.SM.PlayerGrounded && this.PlayerVelocity.y >= 0.0f) {
+            if (this.SM.PlayerGrounded) {
                 if (Mathf.Abs(this.PlayerVelocity.x) <= this.stopThreshold) this.SM?.ChangeState(EntityState.idle);
             } else this.SM?.ChangeState(EntityState.fall);
         }
