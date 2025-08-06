@@ -41,7 +41,8 @@ namespace App.Game.Entities.Mogura {
         [SerializeField] public float blockTime = 2.0f;
 
         // * INTERNAL
-        private Vector2 inputDirection;
+        private Vector2 inputDirection = Vector2.zero;
+        public Vector2 lookDirection = Vector2.zero;
         private bool isGrounded = false;
         private bool isCharging = false;
         private bool isDigging = false;
@@ -87,6 +88,18 @@ namespace App.Game.Entities.Mogura {
 
         public override void UpdateStateAnimation(EntityState id) => this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
 
+        public void OnLook(InputAction.CallbackContext context) {
+            Vector2 input = context.ReadValue<Vector2>();
+            
+            // ? Should it be calculated from Player character position or Screen center position?
+            if (context.control.device is Mouse || context.control.device is Keyboard) {
+                Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
+                this.lookDirection = (input - screenCenter).normalized;
+                isAiming = true;
+                this.aimDirection = this.lookDirection;
+            } else if (context.control.device is Gamepad) this.lookDirection = input.normalized;
+            
+        }
         
         /// <summary>
         /// Custom move implementation for Player entity.
