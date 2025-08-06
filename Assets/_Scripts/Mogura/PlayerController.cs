@@ -43,10 +43,12 @@ namespace App.Game.Entities.Mogura {
         // * INTERNAL
         private Vector2 inputDirection = Vector2.zero;
         public Vector2 lookDirection = Vector2.zero;
+        private Vector2 aimDirection = Vector2.zero;
         private bool isGrounded = false;
         private bool isCharging = false;
         private bool isDigging = false;
         private bool isBlocking = false;
+        private bool isAiming = false;
         public PlayerAnimator PA => baseAnimator as PlayerAnimator;
 
     // ? BASE METHODS===============================================================================================================================
@@ -58,6 +60,16 @@ namespace App.Game.Entities.Mogura {
             else Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
         }
         
+        protected override void Update() {
+            if (isCharging) aimDirection = lookDirection;
+            else if (!isAiming) aimDirection = Vector2.zero;
+            if ((isAiming || isCharging) && aimDirection.normalized.magnitude > 0.0f) {
+                this.aimReticle.transform.position = (Vector2)this.transform.position + this.aimDirection.normalized + (Vector2.up / 2);
+                this.aimReticle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg);
+            } else this.aimReticle.transform.position = Vector2.zero;
+            this.aimReticle.SetActive((isAiming || (isCharging && aimDirection.y >= 0.1f)) && aimDirection.normalized.magnitude > 0.0f);
+        }
+
         protected override void FixedUpdate() {
             base.FixedUpdate();
 
@@ -123,7 +135,7 @@ namespace App.Game.Entities.Mogura {
                 this.isCharging = true;
                 this.stateMachine.ChangeState(EntityState.charge);
             } else if (context.performed && this.isCharging == true) {
-                if (context.duration >= this.jumpHoldTime) {
+                if (context.duration >= this.jumpHoldTime && this.lookDirection.normalized.magnitude >= 1 && aimDirection.y >= 0.1f) {
                     if (DEBUG) Debug.Log("[PI] Jump proceeded");
                     this.stateMachine.ChangeState(EntityState.jump);
                 } else {
@@ -218,6 +230,29 @@ namespace App.Game.Entities.Mogura {
         public void ResetPhysics() {
             //this.rb.SetRotation(0);
             this.rb.linearVelocity = Vector2.zero;
+        }
+
+
+        public void OnAim(InputAction.CallbackContext context) {
+            if (actionsLocked || isDigging || isCharging) return;
+            else if (context.started) {
+                isAiming = true;
+            } else if (context.canceled) {
+                isAiming = false;
+            }
+        }
+
+        public void OnTarget(InputAction.CallbackContext context) {
+            if (!isAiming) return;
+            else if (context.control.device is Mouse || context.control.device is Keyboard) {
+                if (this.lookDirection.normalized.magnitude < 1.0f) {
+                    isAiming = false;
+                    return;
+                } 
+            } else if (context.performed || context.canceled) {
+                Vector2 input = context.ReadValue<Vector2>();
+                this.aimDirection = input.normalized;
+            }
         }
 
 
