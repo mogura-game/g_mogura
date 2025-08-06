@@ -30,9 +30,9 @@ namespace App.Game.Entities.Mogura {
         [Tooltip(".")]
         [SerializeField] private LayerMask groundMask;
         [Tooltip(".")]
-        [SerializeField] private float raySeparation = 0.5f;
+        [SerializeField, Range(-1, 1)] private float groundDetectionOffset = 0.5f;
         [Tooltip(".")]
-        [SerializeField] private float rayDistance = 0.25f;
+        [SerializeField, Range(0, 1)] private float groundDetectionRadius = 0.35f;
         [Tooltip("Property access to get Player Inputs.")]
         public Vector2 InputDirection => this.inputDirection;
         [Tooltip(".")]
@@ -60,7 +60,7 @@ namespace App.Game.Entities.Mogura {
         protected override void FixedUpdate() {
             base.FixedUpdate();
 
-            this.isGrounded = this.DetectGround() && this.GetCurrentLinearVelocity.y <= 0.0f;
+            this.isGrounded = this.DetectGround();
 
             if (this.isDigging) this.PA?.UpdateAnimationClipSpeed(this.GetCurrentLinearVelocity.magnitude);
         }
@@ -69,13 +69,15 @@ namespace App.Game.Entities.Mogura {
             if (!DEBUG) return;
 
             Gizmos.color = Color.red;
-            Vector2 position = (Vector2)this.transform.position + (Vector2.up * (this.rayDistance / 2));
+            Vector2 position = (Vector2)this.transform.position + (Vector2.up * this.groundDetectionOffset);
 
-            Vector2 leftOrigin = position + (this.raySeparation / 2 * Vector2.left);
-            Vector2 rightOrigin = position + (this.raySeparation / 2 * Vector2.right);
+            Gizmos.DrawSphere(position, this.groundDetectionRadius);
+            
+            Gizmos.color = Color.blue;
+            Vector3 end = this.transform.position + (Vector3)this.lookDirection.normalized;
 
-            Gizmos.DrawLine(leftOrigin, leftOrigin + Vector2.down * this.rayDistance);
-            Gizmos.DrawLine(rightOrigin, rightOrigin + Vector2.down * this.rayDistance);
+            Gizmos.DrawLine(this.transform.position, end);
+            Gizmos.DrawSphere(end, 0.05f);
         }
         
     // ? CUSTOM METHODS=============================================================================================================================
@@ -85,7 +87,6 @@ namespace App.Game.Entities.Mogura {
 
         public override void UpdateStateAnimation(EntityState id) => this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
 
-        }
         
         /// <summary>
         /// Custom move implementation for Player entity.
@@ -206,21 +207,12 @@ namespace App.Game.Entities.Mogura {
             this.rb.linearVelocity = Vector2.zero;
         }
 
-        
-        public bool DetectGround() {
-            Vector2 startPosition = (Vector2)this.transform.position + (Vector2.up * (this.rayDistance / 2));
 
-            Vector2 leftRay = startPosition + (this.raySeparation / 2 * Vector2.left);
-            Vector2 rightRay = startPosition + (this.raySeparation / 2 * Vector2.right);
 
-            return this.GroundCheck(leftRay) || this.GroundCheck(rightRay);
         }
 
-        
-        public bool GroundCheck(Vector2 origin) {
-            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, this.rayDistance, this.groundMask);
-            
-            return hit.collider != null;
+        public bool DetectGround() {
+            return Physics2D.OverlapCircle((Vector2)this.transform.position + (Vector2.up * this.groundDetectionOffset), this.groundDetectionRadius, this.groundMask) != null; 
         }
     }
 }

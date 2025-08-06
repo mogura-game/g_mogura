@@ -26,11 +26,6 @@ namespace App.Game.Entities {
         /// </summary>
         bool DetectGround();
         
-        /// <summary>
-        /// 
-        /// </summary>
-        bool GroundCheck(Vector2 offset);
-        
     // ? EVENT METHODS==============================================================================================================================
     
     }
