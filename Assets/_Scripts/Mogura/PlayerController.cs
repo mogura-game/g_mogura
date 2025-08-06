@@ -50,6 +50,10 @@ namespace App.Game.Entities.Mogura {
         private bool isBlocking = false;
         private bool isAiming = false;
         public PlayerAnimator PA => baseAnimator as PlayerAnimator;
+        private Vector3 camVelocity = Vector3.zero;
+        public Vector3 camOffset = 8 * Vector3.back + Vector3.up;
+        public Vector2 camFocus;
+        [Range(0.1f, 1.0f)] public float camSmooth = 0.5f;
         [Range(0.0f, 10.0f)] public float projectileSpeed = 5.0f;
 
         public GameObject prefab;
@@ -60,6 +64,7 @@ namespace App.Game.Entities.Mogura {
             this.stateMachine = new PlayerStateMachine();
             this.stateMachine.baseController = this;
 
+            // TODO: Update to OnValidate checks
             if (this.rb) this.GetComponent<Rigidbody2D>();
             else Debug.LogError("[PC] Player Rigidbody not attached, cannot create reference!");
         }
@@ -92,6 +97,17 @@ namespace App.Game.Entities.Mogura {
             } else if (!this.isBlocking && this.blockTime < 2.0f) this.blockTime += Time.fixedDeltaTime;
         }
 
+        private void LateUpdate() {
+            camFocus = Vector2.Lerp(camFocus, 2 * (lookDirection + (speed * GetCurrentLinearVelocity.normalized)), 10 * camSmooth * Time.deltaTime);
+
+            Vector3 desiredPosition = this.transform.position + (Vector3)camFocus;
+
+            Vector3 currentCamPos = Camera.main.transform.position - camOffset;
+            Vector3 smoothedPosition = Vector3.SmoothDamp(currentCamPos, desiredPosition, ref camVelocity, camSmooth / (1 + GetCurrentLinearVelocity.normalized.magnitude));
+
+            Camera.main.transform.position = smoothedPosition + camOffset;
+        }
+        
         private void OnDrawGizmos() {
             if (!DEBUG) return;
 
