@@ -232,6 +232,14 @@ namespace App.Game.Entities.Mogura {
             this.rb.linearVelocity = Vector2.zero;
         }
 
+        public void OnShoot(InputAction.CallbackContext context) {
+            if (actionsLocked || isCharging || isDigging || !isAiming) return;
+            else if (context.started && this.aimDirection.normalized.magnitude > 0.0f) {
+                GameObject bullet = Instantiate(prefab, (Vector2)transform.position + aimDirection + (Vector2.up / 2), Quaternion.identity);
+                bullet.GetComponent<Rigidbody2D>().linearVelocity = 10 * projectileSpeed * (/*this.GetCurrentLinearVelocity.normalized + */aimDirection.normalized);
+                Destroy(bullet, 1.0f);
+            }
+        }
 
         public void OnAim(InputAction.CallbackContext context) {
             if (actionsLocked || isDigging || isCharging) return;
