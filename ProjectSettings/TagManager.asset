@@ -12,12 +12,12 @@ TagManager:
   - Mogura
   - Water
   - UI
-  - Ground
-  - 
-  - 
-  - 
-  - 
-  - 
+  - HardGround
+  - SoftGround
+  - Enemy
+  - Player projectile
+  - Enemy projectile
+  - Obstacle
   - 
   - 
   - 
@@ -41,6 +41,18 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 678796879
+    locked: 0
+  - name: Gameground
+    uniqueID: 2474967285
+    locked: 0
+  - name: Foreground
+    uniqueID: 1783961751
+    locked: 0
+  - name: UI
+    uniqueID: 4063307449
     locked: 0
   m_RenderingLayers:
   - Default
