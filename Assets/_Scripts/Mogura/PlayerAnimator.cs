@@ -20,8 +20,6 @@ namespace App.Game.Entities.Mogura {
     // ? CUSTOM METHODS=============================================================================================================================
 
     // ? EVENT METHODS==============================================================================================================================
-        public void UpdateAnimationClipSpeed(float objectSpeed) {
-            this.ani.speed = objectSpeed;
-        }
+        public void UpdateAnimationClipSpeed(float objectSpeed) => this.ani.speed = objectSpeed;
     }
 }

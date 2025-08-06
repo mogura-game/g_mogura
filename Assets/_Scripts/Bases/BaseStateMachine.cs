@@ -74,9 +74,7 @@ namespace App.Game.Entities {
         /// <summary>
         /// Sends to Controller animation updates to communicate with Animator. 
         /// </summary>
-        public void RequestStateAnimation() {
-            this.baseController?.UpdateStateAnimation(this.currentState.id);
-        }
+        public void RequestStateAnimation() => this.baseController?.UpdateStateAnimation(this.currentState.id);
         
         /// <summary>
         /// Resets to 0 both Entity rotation and velocity Ridigbody2D values.

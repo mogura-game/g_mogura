@@ -17,12 +17,13 @@ namespace App.Game.Entities.Mogura {
         [SerializeField, Min(0)] private float jumpForce = 1.0f;
         
         // * INTERNAL
+        private PlayerController PC => this.SM?.baseController as PlayerController;
 
     // ? BASE METHODS===============================================================================================================================
         public override void OnExecute () {
             base.OnExecute();
 
-            if (!this.SM.PlayerGrounded && this.PlayerVelocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
+            if (this.PlayerVelocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
         }
 
     // ? CUSTOM METHODS=============================================================================================================================
