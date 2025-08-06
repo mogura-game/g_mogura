@@ -61,6 +61,13 @@ namespace App.Game.Entities.Mogura {
         }
         
         protected override void Update() {
+            if (this.isDigging) {
+                Vector3 scale = this.transform.localScale;
+                if (this.transform.rotation.eulerAngles.z >= 90 && this.transform.rotation.eulerAngles.z <= 270) scale.y = -Mathf.Abs(scale.y);
+                else scale.y = Mathf.Abs(scale.y);
+                this.transform.localScale = scale;
+            } else base.Update();
+
             if (isCharging) aimDirection = lookDirection;
             else if (!isAiming) aimDirection = Vector2.zero;
             if ((isAiming || isCharging) && aimDirection.normalized.magnitude > 0.0f) {
@@ -190,7 +197,9 @@ namespace App.Game.Entities.Mogura {
             if (!this.isDigging) return;
             else if (context.started) {
                 if (DEBUG) Debug.Log($"[PI] DigTriggered");
-                this.rb.AddForce(100 * this.speed * this.transform.right, ForceMode2D.Force);
+                // ? Update to prevent drastic turns applying movemento to transform.right, and smoothing LookDirection sets 
+                this.SetVelocity(5 * this.speed * (this.lookDirection != Vector2.zero ? this.lookDirection : (Vector2)this.transform.right));
+                this.SetLookDirection();
             }
         }
         
@@ -262,6 +271,14 @@ namespace App.Game.Entities.Mogura {
                 this.aimDirection = input.normalized;
             }
         }
+
+        public void SetLookDirection() {
+            //float angle = Mathf.Atan2(this.lookDirection.y, this.lookDirection.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(this.rb.linearVelocity.y, this.rb.linearVelocity.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.Euler(0.0f, 0.0f, angle);
+            this.transform.rotation = targetRotation;
+        }
+
 
 
 
