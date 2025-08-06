@@ -78,8 +78,8 @@ namespace App.Game.Entities.Mogura {
     // ? EVENT METHODS==============================================================================================================================
         public override void SetMoveForce(Vector2 movement) => this.rb.AddForce(movement * this.speed * (this.isGrounded ? 1.0f : 0.25f), ForceMode2D.Force);
 
-        public override void UpdateStateAnimation(EntityState id) {
-            this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
+        public override void UpdateStateAnimation(EntityState id) => this.baseAnimator?.PlayAnimation("mogura_" + id.ToString());
+
         }
         
         /// <summary>
