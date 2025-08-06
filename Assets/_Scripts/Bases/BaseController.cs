@@ -56,6 +56,10 @@ namespace App.Game.Entities {
             if (this.GetCurrentLinearVelocity.x < -0.1f) this.facingRight = false;
             else if (this.GetCurrentLinearVelocity.x > 0.1f) this.facingRight = true;
 
+            this.SetFacingDirection();
+        }
+
+        public void SetFacingDirection() {
             this.transform.localScale = new Vector3(this.facingRight ? 1 : -1, this.transform.localScale.y, this.transform.localScale.z);
         }
 
