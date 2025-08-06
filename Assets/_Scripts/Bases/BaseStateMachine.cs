@@ -131,5 +131,6 @@ namespace App.Game.Entities {
         dig_in,
         dig,
         dig_out,
+        block,
     }
 }

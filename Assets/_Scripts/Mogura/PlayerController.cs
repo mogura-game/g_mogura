@@ -29,12 +29,15 @@ namespace App.Game.Entities.Mogura {
         public Vector2 InputDirection => this.inputDirection;
         [Tooltip(".")]
         public bool IsGrounded => this.isGrounded;
+        [Tooltip("Nax time Player Mogura on block State.")]
+        [SerializeField] public float blockTime = 2.0f;
 
         // * INTERNAL
         private Vector2 inputDirection;
         private bool isGrounded = false;
         private bool isCharging = false;
         private bool isDigging = false;
+        private bool isBlocking = false;
         public PlayerAnimator PA => baseAnimator as PlayerAnimator;
 
     // ? BASE METHODS===============================================================================================================================
@@ -154,6 +157,22 @@ namespace App.Game.Entities.Mogura {
             else if (context.started) {
                 if (DEBUG) Debug.Log($"[PI] DigTriggered");
                 this.rb.AddForce(100 * this.speed * this.transform.right, ForceMode2D.Force);
+            }
+        }
+
+        /// <summary>
+        /// Custom block implementation for Player entity.
+        /// Must match On<MethodName> to be called by PlayerInput events.
+        /// </summary>
+        public void OnBlock(InputAction.CallbackContext context) {
+            if (this.actionsLocked || isAiming || isCharging) return;
+            else if (context.started) {
+                if (DEBUG) Debug.Log($"[PI] Blocking");
+                this.stateMachine.ChangeState(EntityState.block);
+                this.isBlocking = true;
+            } else if (context.canceled) {
+                this.stateMachine.ChangeState(EntityState.idle);
+                this.isBlocking = false;
             }
         }
         
