@@ -165,8 +165,8 @@ TextureImporter:
         y: 417
         width: 96
         height: 95
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,8 +187,8 @@ TextureImporter:
         y: 439
         width: 96
         height: 73
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.375}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -232,7 +232,7 @@ TextureImporter:
         width: 97
         height: 68
       alignment: 9
-      pivot: {x: 0.5, y: 0.1}
+      pivot: {x: 0.75, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -272,11 +272,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 390
-        y: 372
+        y: 373
         width: 94
         height: 68
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.75, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -363,8 +363,8 @@ TextureImporter:
         y: 299
         width: 86
         height: 70
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -404,11 +404,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 162
-        y: 278
+        y: 279
         width: 85
         height: 70
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -430,7 +430,7 @@ TextureImporter:
         width: 89
         height: 68
       alignment: 9
-      pivot: {x: 0.5, y: 0.05}
+      pivot: {x: 0.75, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -517,8 +517,8 @@ TextureImporter:
         y: 211
         width: 66
         height: 65
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.05}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -539,8 +539,8 @@ TextureImporter:
         y: 210
         width: 65
         height: 66
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.075}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -671,8 +671,8 @@ TextureImporter:
         y: 145
         width: 63
         height: 63
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5, y: 0.25}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -767,33 +767,33 @@ TextureImporter:
     nameFileIdTable:
       dig2_0: 1264148021
       dig2_1: -124569460
-      dig2_10: 1835815134
-      dig2_11: -851681406
-      dig2_12: 616688761
-      dig2_13: -1831878381
-      dig2_14: 209159259
+      dig2_10: 320739455
+      dig2_11: -45482397
+      dig2_12: 501664806
+      dig2_13: -1030644739
+      dig2_14: 673399991
       dig2_15: -425986377
       dig2_16: -1536383923
-      dig2_17: -768361197
-      dig2_18: 1736538086
+      dig2_17: 946240867
+      dig2_18: -1001610490
       dig2_19: -807581037
       dig2_2: -767071541
       dig2_20: 1005119667
-      dig2_21: -1274823241
+      dig2_21: 1218021826
       dig2_22: 147443504
-      dig2_23: 2043296849
-      dig2_24: -887025148
-      dig2_25: -786273440
+      dig2_23: -176712897
+      dig2_24: 1383340121
+      dig2_25: -1747357048
       dig2_26: -1030587343
       dig2_27: 1454880687
-      dig2_28: 436607918
-      dig2_29: -280197579
+      dig2_28: 966263057
+      dig2_29: 1516939599
       dig2_3: -1522111200
       dig2_30: 239097746
       dig2_31: 959283421
-      dig2_32: 2023842328
-      dig2_33: 263319403
-      dig2_34: -774145019
+      dig2_32: 621911730
+      dig2_33: -725499215
+      dig2_34: 1354505943
       dig2_35: -2025873038
       dig2_36: -1851030094
       dig2_37: 1964111599
@@ -801,26 +801,26 @@ TextureImporter:
       dig2_39: -1686828337
       dig2_4: -68192069
       dig2_40: -211264258
-      dig2_41: -1074408507
+      dig2_41: -516157666
       dig2_42: -356835268
-      dig2_43: -1076796909
+      dig2_43: 821102607
       dig2_44: -863933585
-      dig2_45: -1896430303
+      dig2_45: 140218691
       dig2_46: 682406538
       dig2_47: 1076676639
       dig2_48: 202288722
       dig2_49: -1240735753
-      dig2_5: -1301064427
+      dig2_5: -1992068218
       dig2_50: -1545825796
-      dig2_51: 875665772
-      dig2_52: -2015488512
-      dig2_53: 20622893
+      dig2_51: 725991128
+      dig2_52: -791335254
+      dig2_53: -175347439
       dig2_54: 1453913471
-      dig2_55: -684718445
-      dig2_6: 271897651
-      dig2_7: 397669196
-      dig2_8: -1708878512
-      dig2_9: 661902563
+      dig2_55: 1522382216
+      dig2_6: 791624767
+      dig2_7: 585040569
+      dig2_8: -1644892917
+      dig2_9: 847963416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
