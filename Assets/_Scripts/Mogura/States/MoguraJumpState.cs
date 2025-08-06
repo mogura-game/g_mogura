@@ -22,8 +22,6 @@ namespace App.Game.Entities.Mogura {
         public override void OnExecute () {
             base.OnExecute();
 
-            this.MoveFromInput();
-
             if (!this.SM.PlayerGrounded && this.PlayerVelocity.y < 0.0f) this.SM?.ChangeState(EntityState.fall); 
         }
 
@@ -32,7 +30,11 @@ namespace App.Game.Entities.Mogura {
         /// Sends the added Vector2 of current velocity and jump force to this Entity Controller.
         /// </summary>
         /// <param name="force">Jump force value.</param>
-        public void JumpFromInput(float force) => this.SM?.JumpDirection(5.666f * force * Vector2.up); 
+        public void JumpFromInput(float force) {
+            Vector3 jumpDir = this.PC.lookDirection;
+            jumpDir.x *= 0.25f;
+            this.SM?.JumpDirection(3.0f * force * jumpDir);
+        }
 
     // ? EVENT METHODS==============================================================================================================================
         public override void OnEnter(BaseStateMachine stateMachine) {
