@@ -17,4 +17,4 @@ MonoBehaviour:
   baseGravity: 1
   stopThreshold: 0.25
   fallThreshold: 0.1
-  jumpForce: 2
+  jumpForce: 5
