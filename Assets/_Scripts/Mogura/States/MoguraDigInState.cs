@@ -18,6 +18,7 @@ namespace App.Game.Entities.Mogura {
         
         // * INTERNAL
         private PlayerStateMachine SM => this.stateMachine as PlayerStateMachine;
+        private PlayerController PC => this.SM?.baseController as PlayerController;
         [SerializeField] private float timeOnState = 0.0f;
 
     // ? BASE METHODS===============================================================================================================================
@@ -37,6 +38,13 @@ namespace App.Game.Entities.Mogura {
             this.SM?.SetMovementLock(true);
             this.SM?.SetStateGravity(this.baseGravity);
             this.SM?.ResetPhysics();
+        }
+
+        public override void OnExit() {
+            base.OnExit();
+            
+            this.PC?.SetVelocity(5 * new Vector2(0.01f, -1.0f));
+            this.PC?.SetLookDirection();
         }
         
     // ? EVENT METHODS==============================================================================================================================
