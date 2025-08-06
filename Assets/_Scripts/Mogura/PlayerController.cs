@@ -86,7 +86,10 @@ namespace App.Game.Entities.Mogura {
 
             this.isGrounded = this.DetectGround();
 
-            if (this.isDigging) this.PA?.UpdateAnimationClipSpeed(this.GetCurrentLinearVelocity.magnitude);
+            if (this.isDigging) {
+                this.PA?.UpdateAnimationClipSpeed(this.GetCurrentLinearVelocity.magnitude / 2);
+                if (!this.DetectGround()) this.ExitDigMode();
+            } else if (!this.isBlocking && this.blockTime < 2.0f) this.blockTime += Time.fixedDeltaTime;
         }
 
         private void OnDrawGizmos() {
