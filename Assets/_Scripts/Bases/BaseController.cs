@@ -34,7 +34,7 @@ namespace App.Game.Entities {
         [Tooltip("Vector which determines Entity max velocity per axis.")]
         [SerializeField] private Vector2 maxVelocity = Vector2.one;
         [Tooltip("Determines the current Entity speed value. (Ranging from 0 to 1)")]
-        [SerializeField, Range(0, 1)] protected float speed = 1.0f;
+        [SerializeField, Range(0, 5)] protected float speed = 1.0f;
         [Tooltip("Defines whether the Player is facing right or not.")]
         [SerializeField] protected bool facingRight = true;
 

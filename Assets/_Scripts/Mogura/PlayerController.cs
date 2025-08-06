@@ -15,6 +15,11 @@ namespace App.Game.Entities.Mogura {
 
     // ? PARAMETERS=================================================================================================================================
         // * REFERENCES
+        [Header("References")]
+        [Tooltip("Box 2D.")]
+        [SerializeField] private Collider2D fullCollider;
+        [Tooltip("Circle.")]
+        [SerializeField] private Collider2D digCollider;
         [Tooltip("Capsule 2D.")]
         [SerializeField] public Collider2D attackCollider;
 
