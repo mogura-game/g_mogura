@@ -132,5 +132,6 @@ namespace App.Game.Entities {
         dig,
         dig_out,
         block,
+        attack,
     }
 }
