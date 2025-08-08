@@ -31,7 +31,7 @@ namespace App.Game.Entities.Mogura {
 
     // ? CUSTOM METHODS=============================================================================================================================
         public virtual void MoveFromInput() {
-            if (!this.SM.MovementLocked && this.PlayerDirection.sqrMagnitude >= 0.01f) this.SM?.MoveDirection(16 * this.PlayerDirection.x * Vector2.right);
+            if (!this.SM.MovementLocked && this.PlayerDirection.sqrMagnitude >= 0.01f) this.SM?.MoveDirection(32 * this.PlayerDirection.x * Vector2.right);
         }
         
     // ? EVENT METHODS==============================================================================================================================
