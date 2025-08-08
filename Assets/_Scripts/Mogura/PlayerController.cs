@@ -308,7 +308,7 @@ namespace App.Game.Entities.Mogura {
 
 
 
-        }
+        
 
         public bool DetectGround() {
             return Physics2D.OverlapCircle((Vector2)this.transform.position + (Vector2.up * this.groundDetectionOffset), this.groundDetectionRadius, this.groundMask) != null; 
