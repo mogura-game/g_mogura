@@ -306,9 +306,23 @@ namespace App.Game.Entities.Mogura {
         }
 
 
+        public void OnRestart(InputAction.CallbackContext context) {
+            if (context.started) {
+                SceneManager.LoadScene(0);
+
+            }
+        }
 
 
-        
+        public void OnShutdown(InputAction.CallbackContext context) {
+            if (context.started) {
+                #if UNITY_EDITOR
+                    EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
+        }
 
         public bool DetectGround() {
             return Physics2D.OverlapCircle((Vector2)this.transform.position + (Vector2.up * this.groundDetectionOffset), this.groundDetectionRadius, this.groundMask) != null; 
