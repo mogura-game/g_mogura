@@ -268,7 +268,10 @@ namespace App.Game.Entities.Mogura {
             if (actionsLocked || isCharging || isDigging || !isAiming) return;
             else if (context.started && this.aimDirection.normalized.magnitude > 0.0f) {
                 GameObject bullet = Instantiate(prefab, (Vector2)transform.position + aimDirection + (Vector2.up / 2), Quaternion.identity);
-                bullet.GetComponent<Rigidbody2D>().linearVelocity = 10 * projectileSpeed * (/*this.GetCurrentLinearVelocity.normalized + */aimDirection.normalized);
+                float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.Euler(0.0f, 0.0f, angle);
+                bullet.transform.rotation = targetRotation;
+                bullet.GetComponent<Rigidbody2D>().linearVelocity = 32 * projectileSpeed * (/*this.GetCurrentLinearVelocity.normalized + */aimDirection.normalized);
                 Destroy(bullet, 1.0f);
             }
         }

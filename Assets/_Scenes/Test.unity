@@ -248,7 +248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00e62770edeaeaa4ea2e1cb4c88bac13, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00e62770edeaeaa4ea2e1cb4c88bac13, type: 3}
       propertyPath: m_LocalScale.z
@@ -260,11 +260,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00e62770edeaeaa4ea2e1cb4c88bac13, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.268833
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00e62770edeaeaa4ea2e1cb4c88bac13, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.243137
+      value: 16.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 00e62770edeaeaa4ea2e1cb4c88bac13, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1306,7 +1306,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 12
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -1323,7 +1323,7 @@ Camera:
   far clip plane: 1000
   field of view: 90
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3071,7 +3071,7 @@ MonoBehaviour:
   camOffset: {x: 0, y: 2, z: -8}
   camFocus: {x: 0, y: 0}
   camSmooth: 0.5
-  projectileSpeed: 4
+  projectileSpeed: 1
   prefab: {fileID: 4089106642403664571, guid: 146ae4bd0a3eb2c448b129bfc20f3f57, type: 3}
   aimReticle: {fileID: 270410113}
 --- !u!114 &652483344
